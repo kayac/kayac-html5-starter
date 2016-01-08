@@ -6,6 +6,7 @@ var pleeease = require('gulp-pleeease');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var jade = require('gulp-jade');
+var browserSync = require('browser-sync');
 
 
 // const
@@ -52,5 +53,21 @@ gulp.task('jade', () => {
 gulp.task('html', gulp.series('jade'));
 
 
+// serve
+gulp.task('browser-sync', () => {
+    browserSync({
+        server: {
+            baseDir: DEST
+        }
+    });
+
+    gulp.watch([`${SRC}/scss/**/*.scss}`], gulp.series('sass', browserSync.reload));
+    gulp.watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
+    gulp.watch([`${SRC}/jade/**/*.jade`], gulp.series('jade', browserSync.reload));
+});
+
+gulp.task('serve', gulp.series('browser-sync'));
+
+
 // default
-gulp.task('default', gulp.parallel('css', 'js', 'html'));
+gulp.task('default', gulp.series(gulp.parallel('css', 'js', 'html'), 'serve'));
