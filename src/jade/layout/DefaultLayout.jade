@@ -1,0 +1,63 @@
+block ConfigBlock
+  - title = page_name ? [page_name, site_name].join(' | ') : site_name
+
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    // meta
+    title= title
+    if description
+      meta(name="description", content=description)
+    if keywords && keywords.length
+      meta(name="keywords", content=keywords.join ? keywords.join(', ') : keywords)
+    if favicon_url
+      link(rel="shortcut icon", href=favicon_url, type="image/vnd.microsoft.icon")
+      link(rel="icon", href=favicon_url, type="image/vnd.microsoft.icon")
+
+    // smartphone meta
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    if webclipicon_url
+      meta(name="apple-mobile-web-app-capable", content='yes')
+      meta(name="apple-mobile-web-app-status-bar-style", content=ios_status_bar || 'default')
+      link(rel="apple-touch-icon", href=webclipicon_url)
+
+    // opg
+    if facebook_app_id
+      meta(property="fb:app_id", content=facebook_app_id)
+    if url
+      meta(property="og:url", content=url)
+    if ogp_image_url
+      meta(property="og:image", content=ogp_image_url)
+    if ogp_image_width
+      meta(property="og:image:width", content=ogp_image_width)
+    if ogp_image_height
+      meta(property="og:image:height", content=ogp_image_height)
+    meta(property="og:type", content=ogp_type || "website")
+    meta(property="og:title", content=title)
+    meta(property="og:site_name", content=site_name)
+    meta(property="og:description", content=description)
+    meta(property="og:locale", content=ogp_locale || "ja_JP")
+
+    // twitter card
+    meta(property="twitter:card", content=(ogp_image_url ? 'summary_large_image' : 'summary'))
+    meta(property="twitter:title", content=title)
+    meta(property="twitter:description", content=description)
+    if ogp_image_url
+      meta(property="twitter:image", content=ogp_image_url)
+    if twitter_card_owner
+      meta(property="twitter:site", content=twitter_card_owner)
+      meta(property="twitter:creator", content=twitter_card_owner)
+
+    // stylesheet
+    script(src="js/lib/html5shiv.min.js")
+    block StylesheetBlock
+      link(rel="stylesheet", href="css/styles.css")
+
+  body
+    .wrapper
+      block ContentBlock
+
+    // javascript
+    block JavascriptBlock
+      script(src="js/script.js")
