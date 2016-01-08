@@ -1,0 +1,22 @@
+{
+  "name": "kayac-starter-kit",
+  "version": "0.0.0",
+  "description": "kayac-starter-kit development.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kayac/kayac-starter-kit.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Kayac Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kayac/kayac-starter-kit/issues"
+  },
+  "homepage": "https://github.com/kayac/kayac-starter-kit#readme"
+}
