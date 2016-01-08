@@ -1,0 +1,23 @@
+{
+  "name": "kayac-starter-kit",
+  "homepage": "https://github.com/kayac/kayac-starter-kit",
+  "authors": [
+    "fujisawa-shin <fujisawa-shin@kayac.com>"
+  ],
+  "description": "kayac-starter-kit development.",
+  "main": "gulpfile.js",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "reset-css": "2.0.*",
+    "jquery": "1.*"
+  }
+}
