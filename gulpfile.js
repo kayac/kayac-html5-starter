@@ -17,7 +17,7 @@ const DEST = './pubilc';
 
 // css
 gulp.task('sass', () => {
-    return gulp.src(`${SRC}/scss/styles.scss`)
+    return gulp.src(`${SRC}/scss/style.scss`)
         .pipe(sass())
         .pipe(pleeease(require(`${CONFIG}/pleeease.json`)))
         .pipe(gulp.dest(`${DEST}/css`));
