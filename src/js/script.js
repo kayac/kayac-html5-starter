@@ -1,9 +1,12 @@
 "use strict";
 
 import Sample from "./lib/Sample";
+import $ from "jquery";
 
 var sample = new Sample({
     name: 'world'
 });
 
-console.log(`hello, ${sample.name}.`);
+$('.wrapper').on('click', () => {
+    console.log(`hello, ${sample.name}.`);
+});

@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 var pleeease = require('gulp-pleeease');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var debowerify = require('debowerify');
 var jade = require('gulp-jade');
 var browserSync = require('browser-sync');
 
@@ -30,6 +31,7 @@ gulp.task('css', gulp.series('sass'));
 gulp.task('browserify', () => {
     return browserify(`${SRC}/js/script.js`)
         .transform(babelify, { presets: ['es2015'] })
+        .transform(debowerify)
         .bundle()
         .pipe(source('script.js'))
         .pipe(gulp.dest(`${DEST}/js`));
