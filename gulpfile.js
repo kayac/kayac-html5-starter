@@ -61,7 +61,7 @@ gulp.task('browser-sync', () => {
         }
     });
 
-    gulp.watch([`${SRC}/scss/**/*.scss}`], gulp.series('sass', browserSync.reload));
+    gulp.watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
     gulp.watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
     gulp.watch([`${SRC}/jade/**/*.jade`], gulp.series('jade', browserSync.reload));
 });
@@ -70,4 +70,5 @@ gulp.task('serve', gulp.series('browser-sync'));
 
 
 // default
-gulp.task('default', gulp.series(gulp.parallel('css', 'js', 'html'), 'serve'));
+gulp.task('build', gulp.parallel('css', 'js', 'html'));
+gulp.task('default', gulp.series('build', 'serve'));
