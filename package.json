@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "kayac-starter-kit development.",
   "main": "gulpfile.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
@@ -18,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/kayac/kayac-starter-kit/issues"
   },
-  "homepage": "https://github.com/kayac/kayac-starter-kit#readme"
+  "homepage": "https://github.com/kayac/kayac-starter-kit#readme",
+  "devDependencies": {
+    "gulp": "git://github.com/gulpjs/gulp.git#4.0"
+  }
 }
