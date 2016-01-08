@@ -7,7 +7,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "start": "gulp",
+    "build-js": "gulp js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,11 @@
   },
   "homepage": "https://github.com/kayac/kayac-starter-kit#readme",
   "devDependencies": {
-    "gulp": "git://github.com/gulpjs/gulp.git#4.0"
+    "babel-preset-es2015": "6.3.*",
+    "babelify": "7.2.*",
+    "browserify": "12.0.*",
+    "debowerify": "1.3.*",
+    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "vinyl-source-stream": "1.1.*"
   }
 }
