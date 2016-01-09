@@ -28,6 +28,12 @@ gulp.task('css', gulp.series('sass'));
 
 
 // js
+gulp.task('copy-bower', () => {
+    return gulp.src(require(`${CONFIG}/copy-bower.json`).src, {
+        cwd: 'bower_components'
+    }).pipe(gulp.dest(`${DEST}/js/lib`));
+});
+
 gulp.task('browserify', () => {
     return browserify(`${SRC}/js/script.js`)
         .transform(babelify, { presets: ['es2015'] })
@@ -37,7 +43,7 @@ gulp.task('browserify', () => {
         .pipe(gulp.dest(`${DEST}/js`));
 });
 
-gulp.task('js', gulp.series('browserify'));
+gulp.task('js', gulp.parallel('browserify', 'copy-bower'));
 
 
 // html
