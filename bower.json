@@ -1,10 +1,10 @@
 {
-  "name": "kayac-starter-kit",
-  "homepage": "https://github.com/kayac/kayac-starter-kit",
+  "name": "kayac-html5-starter",
+  "homepage": "https://github.com/kayac/kayac-html5-starter",
   "authors": [
     "fujisawa-shin <fujisawa-shin@kayac.com>"
   ],
-  "description": "kayac-starter-kit development.",
+  "description": "kayac-html5-starter development.",
   "main": "gulpfile.js",
   "moduleType": [],
   "license": "MIT",

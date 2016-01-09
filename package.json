@@ -1,7 +1,7 @@
 {
-  "name": "kayac-starter-kit",
+  "name": "kayac-html5-starter",
   "version": "0.0.0",
-  "description": "kayac-starter-kit development.",
+  "description": "kayac-html5-starter development.",
   "main": "gulpfile.js",
   "engines": {
     "node": ">=4.0.0"
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kayac/kayac-starter-kit.git"
+    "url": "git+ssh://git@github.com/kayac/kayac-html5-starter.git"
   },
   "keywords": [
     "gulp"
@@ -24,9 +24,9 @@
   "author": "Kayac Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kayac/kayac-starter-kit/issues"
+    "url": "https://github.com/kayac/kayac-html5-starter/issues"
   },
-  "homepage": "https://github.com/kayac/kayac-starter-kit#readme",
+  "homepage": "https://github.com/kayac/kayac-html5-starter#readme",
   "devDependencies": {
     "babel-preset-es2015": "6.3.*",
     "babelify": "7.2.*",
