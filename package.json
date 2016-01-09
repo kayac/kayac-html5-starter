@@ -7,7 +7,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "npm run install-bower",
+    "install-bower": "bower install",
     "start": "gulp",
     "serve": "gulp serve",
     "build": "gulp build",
