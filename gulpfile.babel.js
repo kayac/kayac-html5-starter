@@ -1,13 +1,15 @@
-// require
-var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var sass = require('gulp-sass');
-var pleeease = require('gulp-pleeease');
-var browserify = require('browserify');
-var babelify = require('babelify');
-var debowerify = require('debowerify');
-var jade = require('gulp-jade');
-var browserSync = require('browser-sync');
+"use strict";
+
+// import
+import gulp from 'gulp';
+import source from 'vinyl-source-stream';
+import sass from 'gulp-sass';
+import pleeease from 'gulp-pleeease';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import debowerify from 'debowerify';
+import jade from 'gulp-jade';
+import browserSync from 'browser-sync';
 
 
 // const
@@ -36,7 +38,7 @@ gulp.task('copy-bower', () => {
 
 gulp.task('browserify', () => {
     return browserify(`${SRC}/js/script.js`)
-        .transform(babelify, { presets: ['es2015'] })
+        .transform(babelify)
         .transform(debowerify)
         .bundle()
         .pipe(source('script.js'))
