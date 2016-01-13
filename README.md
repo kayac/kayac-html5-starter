@@ -22,8 +22,8 @@ npm install
   - 依存するbowerコンポーネントに関する設定ファイルです。
 - `package.json`
   - 依存するnpmパッケージに関する設定ファイルです。
-- `gulpfile.js`
-  - gulpタスクに関する設定ファイルです。
+- `gulpfile.babel.js`
+  - gulpタスクに関する設定ファイルです。（`.babel.js`となっているのは、es2015で書くための印です）
 - `pubilc`
   - Web公開されるファイルの置き場所です。 (gulpタスク実行までは空の状態です)
 - `src/scss`, `src/js`, `src/jade`, `src/config`
