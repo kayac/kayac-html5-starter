@@ -1,5 +1,3 @@
-"use strict";
-
 import Sample from "./lib/Sample";
 import $ from "jquery";
 
