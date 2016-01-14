@@ -15,7 +15,7 @@ import browserSync from 'browser-sync';
 // const
 const SRC = './src';
 const CONFIG = './src/config';
-const DEST = './pubilc';
+const DEST = './public';
 
 
 // css

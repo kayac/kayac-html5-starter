@@ -24,7 +24,7 @@ npm install
   - 依存するnpmパッケージに関する設定ファイルです。
 - `gulpfile.babel.js`
   - gulpタスクに関する設定ファイルです。（`.babel.js`となっているのは、es2015で書くための印です）
-- `pubilc`
+- `public`
   - Web公開されるファイルの置き場所です。 (gulpタスク実行までは空の状態です)
 - `src/scss`, `src/js`, `src/jade`, `src/config`
   - ビルドに必要な各種ソースコードです。
