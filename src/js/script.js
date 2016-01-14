@@ -1,7 +1,7 @@
 import Sample from "./lib/Sample";
 import $ from "jquery";
 
-var sample = new Sample({
+const sample = new Sample({
     name: 'world'
 });
 
