@@ -1,5 +1,5 @@
-import Sample from "./lib/Sample";
-import $ from "jquery";
+import Sample from './lib/Sample';
+import $ from 'jquery';
 
 const sample = new Sample({
     name: 'world'
