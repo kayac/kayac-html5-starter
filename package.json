@@ -16,19 +16,11 @@
     "build-js": "gulp js",
     "build-html": "gulp html"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kayac/kayac-html5-starter.git"
-  },
   "keywords": [
     "gulp"
   ],
   "author": "Kayac Inc.",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kayac/kayac-html5-starter/issues"
-  },
-  "homepage": "https://github.com/kayac/kayac-html5-starter#readme",
   "devDependencies": {
     "babel": "6.3.*",
     "babel-preset-es2015": "6.3.*",

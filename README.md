@@ -4,12 +4,8 @@ kayac-html5-starter
 ## 事前に用意するもの
 - node.js (version 4.0.0以上)
 
-## インストール
+## 環境構築
 ```
-# clone
-git clone https://github.com/kayac/kayac-html5-starter.git
-cd kayac-html5-starter
-
 # 開発に使うnpmパッケージおよびbowerコンポーネントをインストール
 npm install
 ```
