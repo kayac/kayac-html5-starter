@@ -1,9 +1,6 @@
 {
   "name": "kayac-html5-starter",
   "description": "kayac-html5-starter development.",
-  "main": "gulpfile.js",
-  "moduleType": [],
-  "license": "MIT",
   "private": true,
   "ignore": [
     "**/.*",
