@@ -1,6 +1,7 @@
 'use strict';
 
 // import
+import path from 'path';
 import gulp from 'gulp';
 import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
@@ -10,6 +11,7 @@ import babelify from 'babelify';
 import debowerify from 'debowerify';
 import jade from 'gulp-jade';
 import browserSync from 'browser-sync';
+import through from 'through2';
 
 
 // const
@@ -37,23 +39,19 @@ gulp.task('copy-bower', () => {
 });
 
 gulp.task('browserify', () => {
-    return gulp.src(`${SRC}/js/script.js`)
+    return gulp.src(`${SRC}/js/kayacHtml5Starter*`)
         .pipe(through.obj((file, encoding, cb) => {
-            browserify(file.path)
-                .transform('babelify')
-                .transform('debowerify')
-                .bundle()
-                .pipe(source, file.path)
-                .pipe(gulp.dest, DEST);
-            cb();
-        }));
+            const bundleStream = browserify(file.path)
+                      .transform(babelify)
+                      .transform(debowerify)
+                      .bundle();
             
-    return browserify(`${SRC}/js/script.js`)
-        .transform(babelify)
-        .transform(debowerify)
-        .bundle()
-        .pipe(source('script.js'))
-        .pipe(gulp.dest(`${DEST}/js`));
+            bundleStream.on('end', cb);
+
+            return bundleStream
+                .pipe(source(path.basename(file.path)))
+                .pipe(gulp.dest(`${DEST}/js`));
+        }));
 });
 
 gulp.task('js', gulp.parallel('browserify', 'copy-bower'));
