@@ -37,6 +37,17 @@ gulp.task('copy-bower', () => {
 });
 
 gulp.task('browserify', () => {
+    return gulp.src(`${SRC}/js/script.js`)
+        .pipe(through.obj((file, encoding, cb) => {
+            browserify(file.path)
+                .transform('babelify')
+                .transform('debowerify')
+                .bundle()
+                .pipe(source, file.path)
+                .pipe(gulp.dest, DEST);
+            cb();
+        }));
+            
     return browserify(`${SRC}/js/script.js`)
         .transform(babelify)
         .transform(debowerify)
