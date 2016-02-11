@@ -73,7 +73,10 @@ gulp.task('browser-sync', () => {
 
     gulp.watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
     gulp.watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
-    gulp.watch([`${SRC}/jade/**/*.jade`], gulp.series('jade', browserSync.reload));
+    gulp.watch([
+        `${SRC}/jade/**/*.jade`,
+        `${SRC}/config/meta.json`
+    ], gulp.series('jade', browserSync.reload));
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
