@@ -10,6 +10,7 @@ import babelify from 'babelify';
 import debowerify from 'debowerify';
 import jade from 'gulp-jade';
 import browserSync from 'browser-sync';
+import readConfig from 'read-config';
 
 
 // const
@@ -20,9 +21,10 @@ const DEST = './public';
 
 // css
 gulp.task('sass', () => {
+    const config = readConfig(`${CONFIG}/pleeease.json`);
     return gulp.src(`${SRC}/scss/style.scss`)
         .pipe(sass())
-        .pipe(pleeease(require(`${CONFIG}/pleeease.json`)))
+        .pipe(pleeease(config))
         .pipe(gulp.dest(`${DEST}/css`));
 });
 
@@ -31,7 +33,8 @@ gulp.task('css', gulp.series('sass'));
 
 // js
 gulp.task('copy-bower', () => {
-    return gulp.src(require(`${CONFIG}/copy-bower.json`).src, {
+    const config = readConfig(`${CONFIG}/copy-bower.json`);
+    return gulp.src(config.src, {
         cwd: 'bower_components'
     }).pipe(gulp.dest(`${DEST}/js/lib`));
 });
@@ -50,7 +53,7 @@ gulp.task('js', gulp.parallel('browserify', 'copy-bower'));
 
 // html
 gulp.task('jade', () => {
-    var locals = require(`${CONFIG}/meta.json`);
+    const locals = readConfig(`${CONFIG}/meta.json`);
 
     return gulp.src(`${SRC}/jade/*.jade`)
         .pipe(jade({
