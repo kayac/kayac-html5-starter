@@ -34,8 +34,7 @@
     "gulp-sass": "2.1.*",
     "read-config": "git://github.com/coditorium/nodejs-read-config",
     "jquery": "2.*",
-    "through2": "2.0.*",
-    "vinyl-source-stream": "1.1.*"
+    "through2": "2.0.*"
   },
   "babel": {
     "presets": [
