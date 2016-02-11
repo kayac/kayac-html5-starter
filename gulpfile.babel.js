@@ -10,7 +10,7 @@ import babelify from 'babelify';
 import debowerify from 'debowerify';
 import jade from 'gulp-jade';
 import browserSync from 'browser-sync';
-import readConfig from "read-config";
+import readConfig from 'read-config';
 
 
 // const
