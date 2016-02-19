@@ -10,6 +10,7 @@
     "postinstall": "npm run install-bower",
     "install-bower": "bower install",
     "start": "gulp",
+    "test": "gulp test",
     "serve": "gulp serve",
     "build": "gulp build",
     "build-css": "gulp css",
