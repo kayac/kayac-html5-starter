@@ -10,6 +10,7 @@ import babelify from 'babelify';
 import debowerify from 'debowerify';
 import jade from 'gulp-jade';
 import browserSync from 'browser-sync';
+import eslint from 'gulp-eslint';
 
 
 // const
@@ -77,6 +78,17 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
+
+
+// test
+gulp.task('eslint', () => {
+    return gulp.src(`${SRC}/js/**/*.js`)
+        .pipe(eslint({ useEslintrc: true }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('test', gulp.parallel('eslint'));
 
 
 // default
