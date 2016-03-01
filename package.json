@@ -33,6 +33,7 @@
     "gulp-pleeease": "2.0.*",
     "gulp-sass": "2.1.*",
     "read-config": "2.0.*",
+    "jquery": "2.*",
     "vinyl-source-stream": "1.1.*"
   },
   "babel": {
