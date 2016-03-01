@@ -35,9 +35,9 @@
     "gulp-jade": "1.1.*",
     "gulp-pleeease": "2.0.*",
     "gulp-sass": "2.1.*",
-    "read-config": "git://github.com/coditorium/nodejs-read-config",
-    "jquery": "2.*",
-    "through2": "2.0.*"
+    "through2": "2.0.*",
+    "read-config": "2.0.*",
+    "jquery": "2.*"
   },
   "babel": {
     "presets": [
