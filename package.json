@@ -4,7 +4,7 @@
   "description": "kayac-html5-starter development.",
   "main": "gulpfile.js",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=5.0.0"
   },
   "scripts": {
     "postinstall": "npm run install-bower",

@@ -2,7 +2,7 @@ kayac-html5-starter
 ====
 
 ## 事前に用意するもの
-- node.js (version 4.0.0以上)
+- node.js (version 5.0.0以上)
 
 ## 環境構築
 ```
