@@ -1,5 +1,11 @@
 // reset css
 @import 'bower_components/reset-css/reset.css';
 
-// components
-@import 'components/wrapper';
+// config
+@import 'variable', 'function', 'mixin', 'keyframes';
+
+// modules
+@import 'module/wrapper';
+
+// pages
+@import 'page/index';
