@@ -1,4 +1,4 @@
-kayac-html5-starter
+kayac-site-mock
 ====
 
 ## 事前に用意するもの

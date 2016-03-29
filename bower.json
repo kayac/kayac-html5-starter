@@ -1,6 +1,6 @@
 {
-  "name": "kayac-html5-starter",
-  "description": "kayac-html5-starter development.",
+  "name": "kayac-site-mock",
+  "description": "kayac-site-mock development.",
   "private": true,
   "ignore": [
     "**/.*",

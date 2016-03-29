@@ -1,7 +1,7 @@
 {
-  "name": "kayac-html5-starter",
+  "name": "kayac-site-mock",
   "version": "0.0.0",
-  "description": "kayac-html5-starter development.",
+  "description": "kayac-site-mock development.",
   "main": "gulpfile.js",
   "engines": {
     "node": ">=5.0.0"

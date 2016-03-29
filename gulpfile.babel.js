@@ -42,7 +42,7 @@ gulp.task('copy-bower', () => {
 });
 
 gulp.task('browserify', () => {
-    return gulp.src(`${SRC}/js/kayacHtml5Starter*`)
+    return gulp.src(`${SRC}/js/kayacSiteMock*`)
         .pipe(transform((file) => {
             return browserify(file.path)
                 .transform(babelify)
