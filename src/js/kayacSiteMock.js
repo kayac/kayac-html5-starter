@@ -1,10 +1,22 @@
-import Sample from './lib/Sample';
 import $ from 'jquery';
 
-const sample = new Sample({
-    name: 'world'
-});
 
-$('.wrapper').on('click', () => {
-    console.log(`hello, ${sample.name}.`);
-});
+// newsのAPIを叩くサンプル
+$.ajax('/api/news.json')
+    .done((json) => {
+        console.log(json);
+    })
+    .fail((err) => {
+        alert("ニュースの読み込みに失敗しました！");
+    });
+
+
+// memberのAPIを叩くサンプル
+const page = 1;
+$.ajax(`/api/member.${page}.json`)
+    .done((json) => {
+        console.log(json);
+    })
+    .fail((err) => {
+        alert("メンバーの読み込みに失敗しました！");
+    });

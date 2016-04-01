@@ -35,9 +35,9 @@
     "gulp-jade": "1.1.*",
     "gulp-pleeease": "2.0.*",
     "gulp-sass": "2.1.*",
-    "through2": "2.0.*",
+    "jquery": "2.*",
     "read-config": "2.0.*",
-    "jquery": "2.*"
+    "through2": "2.0.*"
   },
   "babel": {
     "presets": [
