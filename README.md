@@ -56,5 +56,4 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - [pleeease](http://pleeease.io/)
 - [browser-sync](https://www.browsersync.io/)
 - [jQuery](https://jquery.com/)
-- [html5shiv](https://github.com/afarkas/html5shiv)
 - [Reset CSS](http://meyerweb.com/eric/tools/css/reset/)
