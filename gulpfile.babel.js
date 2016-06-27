@@ -81,8 +81,6 @@ gulp.task('browser-sync', () => {
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.json`
     ], gulp.series('pug', browserSync.reload));
-    watch([`${SRC}/pug/**/*.pug`], function(){
-    });
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
