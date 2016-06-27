@@ -11,6 +11,7 @@ import debowerify from 'debowerify';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
+import watch from 'gulp-watch';
 
 
 // const
@@ -74,12 +75,14 @@ gulp.task('browser-sync', () => {
         }
     });
 
-    gulp.watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    gulp.watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
-    gulp.watch([
+    watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
+    watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
+    watch([
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.json`
     ], gulp.series('pug', browserSync.reload));
+    watch([`${SRC}/pug/**/*.pug`], function(){
+    });
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
