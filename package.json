@@ -2,7 +2,7 @@
   "name": "kayac-html5-starter",
   "version": "0.0.0",
   "description": "kayac-html5-starter development.",
-  "main": "gulpfile.js",
+  "main": "gulpfile.babel.js",
   "engines": {
     "node": ">=5.0.0"
   },
