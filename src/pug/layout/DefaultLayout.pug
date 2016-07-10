@@ -19,7 +19,7 @@ html(lang="ja")
     meta(http-equiv="X-UA-Compatible", content="IE=Edge")
       
     // smartphone meta
-    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no")
     if webclipicon_url
       meta(name="apple-mobile-web-app-capable", content='yes')
       meta(name="apple-mobile-web-app-status-bar-style", content=ios_status_bar || 'default')
@@ -51,6 +51,12 @@ html(lang="ja")
     if twitter_card_owner
       meta(property="twitter:site", content=twitter_card_owner)
       meta(property="twitter:creator", content=twitter_card_owner)
+
+    if url
+      // canonical url
+      //- このページをはてぶ・シェアする際、使われるべきURLを明示する指定
+      //- wwwやhttps、getパラメータなど、微妙に違うURLでアクセスされても、使われるURLをひとつに絞れる
+      link(rel="canonical" href=url)
 
     // stylesheet
     script(src="js/lib/html5shiv.min.js")

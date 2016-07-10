@@ -7,9 +7,10 @@ import pleeease from 'gulp-pleeease';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import debowerify from 'debowerify';
-import jade from 'gulp-jade';
+import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
+import watch from 'gulp-watch';
 
 import transform from './lib/vinyl-transform';
 
@@ -55,18 +56,18 @@ gulp.task('js', gulp.parallel('browserify', 'copy-bower'));
 
 
 // html
-gulp.task('jade', () => {
+gulp.task('pug', () => {
     const locals = readConfig(`${CONFIG}/meta.json`);
 
-    return gulp.src(`${SRC}/jade/*.jade`)
-        .pipe(jade({
+    return gulp.src(`${SRC}/pug/*.pug`)
+        .pipe(pug({
             locals: locals,
             pretty: true
         }))
         .pipe(gulp.dest(`${DEST}`));
 });
 
-gulp.task('html', gulp.series('jade'));
+gulp.task('html', gulp.series('pug'));
 
 
 // serve
@@ -77,12 +78,12 @@ gulp.task('browser-sync', () => {
         }
     });
 
-    gulp.watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    gulp.watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
-    gulp.watch([
-        `${SRC}/jade/**/*.jade`,
+    watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
+    watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
+    watch([
+        `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.json`
-    ], gulp.series('jade', browserSync.reload));
+    ], gulp.series('pug', browserSync.reload));
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
