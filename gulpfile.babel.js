@@ -2,7 +2,6 @@
 
 // import
 import gulp from 'gulp';
-import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
 import pleeease from 'gulp-pleeease';
 import browserify from 'browserify';
@@ -12,6 +11,8 @@ import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
+
+import transform from './lib/vinyl-transform';
 
 
 // const
@@ -41,11 +42,13 @@ gulp.task('copy-bower', () => {
 });
 
 gulp.task('browserify', () => {
-    return browserify(`${SRC}/js/script.js`)
-        .transform(babelify)
-        .transform(debowerify)
-        .bundle()
-        .pipe(source('script.js'))
+    return gulp.src(`${SRC}/js/kayacHtml5Starter*`)
+        .pipe(transform((file) => {
+            return browserify(file.path)
+                .transform(babelify)
+                .transform(debowerify)
+                .bundle();
+        }))
         .pipe(gulp.dest(`${DEST}/js`));
 });
 
