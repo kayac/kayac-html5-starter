@@ -10,7 +10,6 @@
     "tests"
   ],
   "devDependencies": {
-    "reset-css": "2.0.*",
-    "html5shiv": "3.7.*"
+    "reset-css": "2.0.*"
   }
 }
