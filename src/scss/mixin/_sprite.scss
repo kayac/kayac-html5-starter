@@ -1,0 +1,82 @@
+@mixin sprite-width($sprite, $retina) {
+  width: nth($sprite, 5)/$retina;
+}
+
+@mixin sprite-height($sprite, $retina) {
+  height: nth($sprite, 6)/$retina;
+}
+
+@mixin sprite-position($sprite, $retina) {
+  $sprite-offset-x: nth($sprite, 3)/$retina;
+  $sprite-offset-y: nth($sprite, 4)/$retina;
+  background-position: $sprite-offset-x $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite, $retina) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite-background-size($sprite, $retina) {
+  background-size: nth($sprite, 7)/$retina nth($sprite, 8)/$retina
+}
+
+//////////////////////////////////////////////////////
+// 1. mixin自体pc,sp用に出し分けるバージョン
+//////////////////////////////////////////////////////
+
+@mixin sprite-pc($sprite) {
+  @include sprite-image($sprite, 1);
+  @include sprite-position($sprite, 1);
+  @include sprite-width($sprite, 1);
+  @include sprite-height($sprite, 1);
+  @include sprite-background-size($sprite, 1);
+}
+
+@mixin sprite-sp($sprite) {
+  @include sprite-image($sprite, 2);
+  @include sprite-position($sprite, 2);
+  @include sprite-width($sprite, 2);
+  @include sprite-height($sprite, 2);
+  @include sprite-background-size($sprite, 2);
+}
+
+@mixin sprites-pc($sprites, $retina: 1) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite-sp($sprite, 1);
+    }
+  }
+}
+
+@mixin sprites-sp($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite-sp($sprite, 2);
+    }
+  }
+}
+
+//////////////////////////////////////////////////////
+// 2. 拡大縮小を明示的に出し分けるバージョン
+// retina:1 -> pc用、retina:2 -> sp用
+//////////////////////////////////////////////////////
+
+@mixin sprite($sprite, $retina: 1) {
+  @include sprite-image($sprite, $retina);
+  @include sprite-position($sprite, $retina);
+  @include sprite-width($sprite, $retina);
+  @include sprite-height($sprite, $retina);
+}
+
+@mixin sprites($sprites, $retina: 1) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite-sp($sprite, $retina);
+    }
+  }
+}
+

@@ -1,0 +1,8 @@
+.sprite-gulp-pc {
+  // 通常のsprite画像表示
+  @include sprite-pc($sprite-pc-gulp);
+}
+.sprite-gulp-sp {
+  // retina向けのsprite画像表示
+  @include sprite-sp($sprite-pc-gulp);
+}

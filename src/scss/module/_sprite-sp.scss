@@ -1,0 +1,53 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$sprite-sp-grunt-name: 'sprite-sp-grunt';
+$sprite-sp-grunt-x: 404px;
+$sprite-sp-grunt-y: 932px;
+$sprite-sp-grunt-offset-x: -404px;
+$sprite-sp-grunt-offset-y: -932px;
+$sprite-sp-grunt-width: 233px;
+$sprite-sp-grunt-height: 216px;
+$sprite-sp-grunt-total-width: 1422px;
+$sprite-sp-grunt-total-height: 1332px;
+$sprite-sp-grunt-image: '../images/sprite-sp.png';
+$sprite-sp-grunt: (404px, 932px, -404px, -932px, 233px, 216px, 1422px, 1332px, '../images/sprite-sp.png', 'sprite-sp-grunt', );
+$sprite-sp-gulp-name: 'sprite-sp-gulp';
+$sprite-sp-gulp-x: 0px;
+$sprite-sp-gulp-y: 932px;
+$sprite-sp-gulp-offset-x: 0px;
+$sprite-sp-gulp-offset-y: -932px;
+$sprite-sp-gulp-width: 400px;
+$sprite-sp-gulp-height: 400px;
+$sprite-sp-gulp-total-width: 1422px;
+$sprite-sp-gulp-total-height: 1332px;
+$sprite-sp-gulp-image: '../images/sprite-sp.png';
+$sprite-sp-gulp: (0px, 932px, 0px, -932px, 400px, 400px, 1422px, 1332px, '../images/sprite-sp.png', 'sprite-sp-gulp', );
+$sprite-sp-webpack-name: 'sprite-sp-webpack';
+$sprite-sp-webpack-x: 0px;
+$sprite-sp-webpack-y: 0px;
+$sprite-sp-webpack-offset-x: 0px;
+$sprite-sp-webpack-offset-y: 0px;
+$sprite-sp-webpack-width: 1422px;
+$sprite-sp-webpack-height: 928px;
+$sprite-sp-webpack-total-width: 1422px;
+$sprite-sp-webpack-total-height: 1332px;
+$sprite-sp-webpack-image: '../images/sprite-sp.png';
+$sprite-sp-webpack: (0px, 0px, 0px, 0px, 1422px, 928px, 1422px, 1332px, '../images/sprite-sp.png', 'sprite-sp-webpack', );
+$spritesheet-sp-width: 1422px;
+$spritesheet-sp-height: 1332px;
+$spritesheet-sp-image: '../images/sprite-sp.png';
+$spritesheet-sp-sprites: ($sprite-sp-grunt, $sprite-sp-gulp, $sprite-sp-webpack, );
+$spritesheet-sp: (1422px, 1332px, '../images/sprite-sp.png', $spritesheet-sp-sprites, );
+
+
