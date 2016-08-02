@@ -1,10 +1,10 @@
-.sprite-gulp-pc {
+.sprite-pic1-pc {
   // 通常のsprite画像表示
   // $sprite- ディレクトリ名 - 画像ファイル名
-  @include sprite-pc($sprite-pc-gulp);
+  @include sprite-pc($sprite-pc-pic1);
 }
-.sprite-gulp-sp {
+.sprite-pic1-sp {
   // retina向けのsprite画像表示
   // $sprite- ディレクトリ名 - 画像ファイル名
-  @include sprite-sp($sprite-pc-gulp);
+  @include sprite-sp($sprite-sp-pic1);
 }

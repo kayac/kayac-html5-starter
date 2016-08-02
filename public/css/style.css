@@ -77,16 +77,16 @@ $spritesheet: width height image $spritesheet-sprites;
   font-size: 16px;
   line-height: 1.5; }
 
-.sprite-gulp-pc {
+.sprite-pic1-pc {
   background-image: url(../images/sprite-pc.png);
-  background-position: 0px -932px;
-  width: 400px;
-  height: 400px;
-  background-size: 1422px 1332px; }
-
-.sprite-gulp-sp {
-  background-image: url(../images/sprite-pc.png);
-  background-position: 0px -466px;
-  width: 200px;
+  background-position: 0px 0px;
+  width: 300px;
   height: 200px;
-  background-size: 711px 666px; }
+  background-size: 604px 404px; }
+
+.sprite-pic1-sp {
+  background-image: url(../images/sprite-sp.png);
+  background-position: 0px 0px;
+  width: 150px;
+  height: 100px;
+  background-size: 302px 202px; }
