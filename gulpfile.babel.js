@@ -31,6 +31,7 @@ gulp.task('sass', () => {
 
 gulp.task('css', gulp.series('sass'));
 
+// js
 gulp.task('browserify', () => {
     return browserify(`${SRC}/js/script.js`)
         .transform(babelify)
