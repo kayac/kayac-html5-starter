@@ -45,7 +45,7 @@ gulp.task('js', gulp.parallel('browserify'));
 
 // html
 gulp.task('pug', () => {
-    const locals = readConfig(`${CONFIG}/meta.json`);
+    const locals = readConfig(`${CONFIG}/meta.yml`);
 
     return gulp.src(`${SRC}/pug/*.pug`)
         .pipe(pug({
