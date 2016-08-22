@@ -45,7 +45,7 @@ gulp.task('js', gulp.parallel('browserify'));
 
 // html
 gulp.task('pug', () => {
-    const locals = readConfig(`${CONFIG}/meta.json`);
+    const locals = readConfig(`${CONFIG}/meta.yml`);
 
     return gulp.src(`${SRC}/pug/*.pug`)
         .pipe(pug({
@@ -70,7 +70,7 @@ gulp.task('browser-sync', () => {
     watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
-        `${SRC}/config/meta.json`
+        `${SRC}/config/meta.yml`
     ], gulp.series('pug', browserSync.reload));
 });
 
