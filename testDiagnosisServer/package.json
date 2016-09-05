@@ -4,9 +4,9 @@
   "scripts": {
     "start": "node ./"
   },
-  "author": "gozaru",
+  "author": "Kayac Inc.",
   "license": "MIT",
   "devDependencies": {
-    "express": ""
+    "express": "4.14.0"
   }
 }
