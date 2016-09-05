@@ -3,6 +3,7 @@ import Footer from "./Footer"
 import TopPage from "./TopPage"
 import CommentBox from "./CommentBox"
 import AjaxCommentBox from "./AjaxCommentBox"
+import AjaxDiagnosis from "./AjaxDiagnosis"
 import React from 'react';
 
 export default React.createClass ({
@@ -39,6 +40,9 @@ const Main = React.createClass ({
         return(
           <AjaxCommentBox url="debug_commentbox"/>
         )
+      case "AjaxDiagnosis":
+        return(
+          <AjaxDiagnosis interview_url="http://localhost:3002/api/interview" diagnosis_url="http://localhost:3002/api/diagnosis"/>
         )
     }
   }

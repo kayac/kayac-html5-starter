@@ -1,4 +1,4 @@
-import Route from "./react-module/Route"
+import Route from "./components/Route"
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -10,6 +10,7 @@ export default React.createClass ({
         This is TopPage!
         <input type="button" value="Comment" onClick={this.handleClick}/>
         <input type="button" value="AjaxComment" onClick={this.handleClick}/>
+        <input type="button" value="AjaxDiagnosis" onClick={this.handleClick}/>
       </div>
     );
   }
