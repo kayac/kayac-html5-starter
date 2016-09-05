@@ -1,15 +1,9 @@
 import React from 'react';
 
-export default class TopPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this); // You must bind "this" in ES6 class.
-  }
-
+export default React.createClass ({
   handleClick(e){
     this.props.changeScene(e.target.value);
-  }
-
+  },
   render() {
     return(
       <div>
@@ -19,4 +13,4 @@ export default class TopPage extends React.Component {
       </div>
     );
   }
-}
+})

@@ -1,41 +1,56 @@
+import $ from "./Ajax"
 import React from 'react';
 
-export default class AjaxCommentBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments:["hoge", "hoge", "hoge"]
-    }
-    this.addComment = this.addComment.bind(this); // You must bind "this" in ES6 class.
+export default React.createClass({
+  loadComment:function(){
+    $.ajax({
+      url: this.props.url,
+      dataType: "json",
+      cache:false,
+      success: function(data){
+        this.setComments(data)
+      }.bind(this),
+      error:function(xhr, status, err){
+        console.error(status, err.toString());
+      }.bind(this),
+    })
+  },
+  setComments:function(comments){
+    this.setState({comments:comments})
+  },
+  getInitialState : function(){
+    return {comments:[]}
+  },
+  componentDidMount:function(){
+    this.loadComment();
+    setInterval(this.loadComment, 1000); // taste bad. (magic number)
+  },
+  render:function(){
+    return(
+      <div className='commentBox'>
+        <CommentList comments={this.state.comments}/>
+        <CommentForm setComments={this.setComments} url={this.props.url}/>
+      </div>
+    )
   }
+})
 
-  addComment(comment){
-    this.setState({
-      comments:this.state.comments.concat(comment)
-    });
-  }
-
-  render() {
-    const commentNodes = this.state.comments.map(function(val, index){
+const CommentList = React.createClass({
+  render(){
+    const commentNodes = this.props.comments.map(function(val, index){
       return (
         <Comment text={val} key={index}/> // key is required.
       )
     })
     return(
-      <div className='commentBox'>
-        [Under Construction]
-        #Now this page is same as CommentBox.
+      <div>
         {commentNodes}
-        <CommentForm addComment={this.addComment}/>
       </div>
-    );
+    )
   }
-}
+})
 
-class Comment extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Comment = React.createClass({
   render() {
     return(
       <div className='comment'>
@@ -43,26 +58,29 @@ class Comment extends React.Component {
       </div>
     );
   }
-}
+});
 
-class CommentForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comment :"hello",      
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
+const CommentForm = React.createClass({
+  postComment:function(comment){
+    $.ajax({
+      url: this.props.url,
+      type: "POST",
+      dataType: "json",
+      data:comment,
+      success: function(data){
+        this.props.setComments(data);
+      }.bind(this),
+    })
+  },
   handleChange(e){
     this.setState({comment :e.target.value});
-  }
-
+  },
   handleClick(e){
-    this.props.addComment(this.state.comment);
-  }
-
+    this.postComment(this.state.comment);
+  },
+  getInitialState : function(){
+    return {comment:"hello"}
+  },
   render(){
     return (
       <div>
@@ -71,4 +89,4 @@ class CommentForm extends React.Component {
       </div>
     )
   }
-}
+})
