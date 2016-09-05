@@ -22,7 +22,11 @@ export default React.createClass({
       cache:false,
       data: {q_num : this.state.question_number},
       success: function(data){
-        this.setState(data);
+        if(data.question){
+          this.setState(data);
+        }else{
+          this.props.showResult(this.state.user_answer_values);
+        }
       }.bind(this),
       error:function(xhr, status, err){
         console.error(status, err.toString());
@@ -36,11 +40,7 @@ export default React.createClass({
         user_answer_values : this.state.user_answer_values.concat(this.state.user_answer_value),
         question_number : this.state.question_number+1,
       }, function(){
-        if(this.state.question_number <= 2){
-          this.loadQuestion();
-        }else{
-          this.props.showResult(this.state.user_answer_values)
-        }
+        this.loadQuestion();
       });
     }
   },
