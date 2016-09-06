@@ -1,10 +1,8 @@
-var path = require('path');
 var express = require('express');
 var app = express();
 
 app.set('port', 3002);
 
-app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-cache');
@@ -23,12 +21,7 @@ const questions = [
 ]
 app.get('/api/interview', function(req, res){
   const q_num = req.query.q_num;
-  if(q_num <= questions.length){
-    res.json(questions[q_num-1]);
-  }
-  else{
-    res.json({})
-  }
+  res.json(questions[q_num-1] || {});
 });
 
 app.get('/api/diagnosis', function(req, res){

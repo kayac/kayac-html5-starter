@@ -1,4 +1,4 @@
-import $ from "./Ajax"
+import $ from "../AjaxWrapper"
 import React from 'react';
 
 export default React.createClass({
@@ -7,12 +7,12 @@ export default React.createClass({
       url: this.props.url,
       dataType: "json",
       cache:false,
-      success: function(data){
+      success: (data)=>{
         this.setComments(data)
-      }.bind(this),
-      error:function(xhr, status, err){
+      },
+      error:(xhr, status, err)=>{
         console.error(status, err.toString());
-      }.bind(this),
+      },
     })
   },
   setComments:function(comments){

@@ -1,4 +1,4 @@
-import $ from "./Ajax"
+import $ from "../AjaxWrapper"
 import React from 'react';
 
 export default React.createClass({

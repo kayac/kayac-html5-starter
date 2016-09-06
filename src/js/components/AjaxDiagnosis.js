@@ -1,4 +1,4 @@
-import $ from "./Ajax"
+import $ from "../AjaxWrapper"
 import QuestionForm from "./QuestionForm"
 import React from 'react';
 
@@ -18,13 +18,13 @@ export default React.createClass({
         dataType: "json",
         cache:false,
         data: {user_answer_values : user_answer_values},
-        success: function(data){
+        success: (data)=>{
           console.log(data);
           this.setState(data);
-        }.bind(this),
-        error:function(xhr, status, err){
+        },
+        error:(xhr, status, err)=>{
           console.error(status, err.toString());
-        }.bind(this),
+        },
       })      
     });
   },

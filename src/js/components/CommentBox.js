@@ -1,5 +1,6 @@
 import React from 'react';
 
+// ES6 classes cause bind hell. You should use React.createClass() .
 export default class CommentBox extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ export default class CommentBox extends React.Component {
     })
     return(
       <div className='commentBox'>
-        This is Comment Page!
+        This is Comment Page (React with ES6 class)!
         {commentNodes}
         <CommentForm addComment={this.addComment}/>
       </div>
