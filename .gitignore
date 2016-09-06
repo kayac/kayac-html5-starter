@@ -36,3 +36,5 @@ node_modules
 .node_repl_history
 
 bower_components
+public
+.DS_Store

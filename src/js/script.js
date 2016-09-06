@@ -1,10 +1,8 @@
-import Sample from './lib/Sample';
-import $ from 'jquery';
+import Route from "./components/Route"
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const sample = new Sample({
-    name: 'world'
-});
-
-$('.wrapper').on('click', () => {
-    console.log(`hello, ${sample.name}.`);
-});
+ReactDOM.render(
+  <Route />,
+  document.getElementById('container')
+);
