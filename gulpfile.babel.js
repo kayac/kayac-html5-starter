@@ -47,7 +47,7 @@ gulp.task('js', gulp.parallel('browserify'));
 gulp.task('pug', () => {
     const locals = readConfig(`${CONFIG}/meta.yml`);
 
-    return gulp.src(`${SRC}/pug/*.pug`)
+    return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
         .pipe(pug({
             locals: locals,
             pretty: true
