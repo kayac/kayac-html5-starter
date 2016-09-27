@@ -66,7 +66,8 @@ gulp.task('browser-sync', () => {
         server: {
             baseDir: HTDOCS
         },
-        startPath: BASE_PATH
+        startPath: BASE_PATH,
+        ghostMode: false
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
