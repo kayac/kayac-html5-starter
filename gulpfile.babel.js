@@ -84,7 +84,3 @@ gulp.task('serve', gulp.series('browser-sync'));
 // default
 gulp.task('build', gulp.parallel('css', 'js', 'html'));
 gulp.task('default', gulp.series('build', 'serve'));
-
-
-
-
