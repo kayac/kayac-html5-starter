@@ -17,7 +17,9 @@ import watch from 'gulp-watch';
 // const
 const SRC = './src';
 const CONFIG = './src/config';
-const DEST = './public';
+const HTDOCS = './public';
+const BASE_PATH = '/';
+const DEST = `${HTDOCS}${BASE_PATH}`;
 
 
 // css
@@ -62,8 +64,10 @@ gulp.task('html', gulp.series('pug'));
 gulp.task('browser-sync', () => {
     browserSync({
         server: {
-            baseDir: DEST
-        }
+            baseDir: HTDOCS
+        },
+        startPath: BASE_PATH,
+        ghostMode: false
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
