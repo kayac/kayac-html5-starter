@@ -7,6 +7,9 @@ kayac-html5-starter
 ## 環境構築
 ```
 # 開発に使うnpmパッケージをインストール
+yarn
+
+# または
 npm install
 ```
 
