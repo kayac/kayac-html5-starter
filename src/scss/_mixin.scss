@@ -5,7 +5,7 @@
 }
 
 @mixin sp-layout {
-    @media (max-width: ($tab_min_width - 1)) {
+    @media (max-width: ($pc_min_width - 1)) {
         @content;
     }
 }
