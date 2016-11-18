@@ -13,6 +13,8 @@ import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
 
+import versionIncrement from './lib/version-increment';
+
 
 // const
 const SRC = './src';
@@ -49,6 +51,11 @@ gulp.task('js', gulp.parallel('browserify'));
 gulp.task('pug', () => {
     const locals = readConfig(`${CONFIG}/meta.yml`);
 
+    locals.versions = versionIncrement({
+        'style.css': `${DEST}/css/style.css`,
+        'script.js': `${DEST}/js/script.js`
+    });
+    
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
         .pipe(pug({
             locals: locals,
@@ -74,7 +81,9 @@ gulp.task('browser-sync', () => {
     watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
-        `${SRC}/config/meta.yml`
+        `${SRC}/config/meta.yml`,
+        `${DEST}/css/style.css`,
+        `${DEST}/js/script.js`
     ], gulp.series('pug', browserSync.reload));
 });
 
