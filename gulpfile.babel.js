@@ -13,7 +13,7 @@ import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
 
-import versionIncrement from './lib/version-increment';
+import RevLogger from './lib/RevLogger';
 
 
 // const
@@ -22,6 +22,11 @@ const CONFIG = './src/config';
 const HTDOCS = './public';
 const BASE_PATH = '/';
 const DEST = `${HTDOCS}${BASE_PATH}`;
+
+const revLogger = new RevLogger({
+    'style.css': `${DEST}/css/style.css`,
+    'script.js': `${DEST}/js/script.js`
+});
 
 
 // css
@@ -50,11 +55,7 @@ gulp.task('js', gulp.parallel('browserify'));
 // html
 gulp.task('pug', () => {
     const locals = readConfig(`${CONFIG}/meta.yml`);
-
-    locals.versions = versionIncrement({
-        'style.css': `${DEST}/css/style.css`,
-        'script.js': `${DEST}/js/script.js`
-    });
+    locals.versions = revLogger.versions();
     
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
         .pipe(pug({
@@ -81,10 +82,9 @@ gulp.task('browser-sync', () => {
     watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
-        `${SRC}/config/meta.yml`,
-        `${DEST}/css/style.css`,
-        `${DEST}/js/script.js`
+        `${SRC}/config/meta.yml`
     ], gulp.series('pug', browserSync.reload));
+    watch(revLogger.values(), gulp.series('pug', browserSync.reload));
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
