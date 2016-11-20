@@ -1204,7 +1204,7 @@ chmodr@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/chmodr/-/chmodr-0.1.0.tgz#e09215a1d51542db2a2576969765bcf6125583eb"
 
-chokidar@^1.4.3, chokidar@^1.5.2:
+chokidar@^1.4.3, chokidar@^1.5.2, chokidar@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.6.1.tgz#2f4447ab5e96e50fb3d789fd90d4c72e0e4c70c2"
   dependencies:
@@ -4990,10 +4990,11 @@ retry@0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/retry/-/retry-0.6.0.tgz#1c010713279a6fd1e8def28af0c3ff1871caa537"
 
-rev-logger:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rev-logger/-/rev-logger-1.0.0.tgz#88ff8853704882bb2bd126b6e29d9bffdc03fc8e"
+rev-logger@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rev-logger/-/rev-logger-1.1.0.tgz#7f3592519a6131c3ae32e1a4f7fac23f8cc6375f"
   dependencies:
+    chokidar "^1.6.1"
     colors "0.6.*"
     optimist "0.5.*"
 

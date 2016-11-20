@@ -83,7 +83,10 @@ gulp.task('browser-sync', () => {
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.yml`
     ], gulp.series('pug', browserSync.reload));
-    watch(revLogger.values(), gulp.series('pug', browserSync.reload));
+
+    revLogger.watch((changed) => {
+        gulp.series('pug', browserSync.reload)();
+    });
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
