@@ -6,7 +6,7 @@ kayac-html5-starter
 
 ## 環境構築
 ```
-# 開発に使うnpmパッケージおよびbowerコンポーネントをインストール
+# 開発に使うnpmパッケージをインストール
 yarn
 
 # または
@@ -17,8 +17,6 @@ npm install
 
 - `README.md`
   - このファイルです。
-- `bower.json`
-  - 依存するbowerコンポーネントに関する設定ファイルです。
 - `package.json`
   - 依存するnpmパッケージに関する設定ファイルです。
 - `gulpfile.babel.js`
@@ -46,7 +44,7 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 ## 対応ブラウザ
 - 各種モダンブラウザ最新バージョン・IE10以上
   - 対応ブラウザを変更する場合、`src/config/pleeease.json`の`autoprefixer.browsers`を修正することをお忘れなく
-  - またIE8に対応する場合は、bowerのjQueryを1系にすることもお忘れなく
+  - またIE8に対応する場合は、jQueryを1系にすることもお忘れなく
 
 ## 依存ライブラリ
 
