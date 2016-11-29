@@ -7,7 +7,6 @@ import sass from 'gulp-sass';
 import pleeease from 'gulp-pleeease';
 import browserify from 'browserify';
 import babelify from 'babelify';
-import debowerify from 'debowerify';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
@@ -43,7 +42,6 @@ gulp.task('css', gulp.series('sass'));
 gulp.task('browserify', () => {
     return browserify(`${SRC}/js/script.js`)
         .transform(babelify)
-        .transform(debowerify)
         .bundle()
         .pipe(source('script.js'))
         .pipe(gulp.dest(`${DEST}/js`));
