@@ -2,10 +2,18 @@
 @import 'node_modules/reset.css/reset.css';
 
 // config
-@import 'variable', 'function', 'mixin', 'keyframes';
+@import 'variable', 'function', 'keyframes';
+
+// mixin
+@import
+  'mixin/mixin',
+  'mixin/sprite';
 
 // modules
-@import 'module/wrapper';
+@import
+  'module/sprite-pc',
+  'module/sprite-sp',
+  'module/wrapper';
 
 // pages
 @import 'page/index';

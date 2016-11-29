@@ -34,6 +34,9 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - `npm start`
   - すべてのソースコードをビルドし、開発用ブラウザを立ち上げ、その後ソースコードに修正があれば自動ビルド・自動ブラウザ更新します
   - 基本的には、このコマンドを実行しておくだけで開発が可能なはずです。
+- `gulp sprite`
+  - `src/sprite/`以下のディレクトリごとにスプライト画像を生成します。
+  - スプライト画像は`public/images/`以下に、scssは`src/scss/module/`に生成されます。
 
 ## 使用言語
 
@@ -58,3 +61,4 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - [browser-sync](https://www.browsersync.io/)
 - [jQuery](https://jquery.com/)
 - [Reset CSS](http://meyerweb.com/eric/tools/css/reset/)
+- [gulp.spritesmith](https://github.com/twolfson/gulp.spritesmith)

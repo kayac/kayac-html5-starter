@@ -11,7 +11,10 @@ import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
+import plumber from 'gulp-plumber';
+import spritesmith from 'gulp.spritesmith';
 
+import getFolders from './gulp/util/getFolders.js';
 
 // const
 const SRC = './src';
@@ -56,6 +59,34 @@ gulp.task('pug', () => {
 });
 
 gulp.task('html', gulp.series('pug'));
+
+
+// sprite
+gulp.task('spritesmith', () => {
+    const folders = getFolders(`${SRC}/sprite/`);
+    folders.forEach((folder) => {
+        const spriteData = gulp.src(`${SRC}/sprite/${folder}/*.png`)
+            .pipe(plumber())
+            .pipe(spritesmith({
+                imgName: `sprite-${folder}.png`,
+                imgPath: `../images/sprite-${folder}.png`,
+                cssName: `_sprite-${folder}.scss`,
+                cssFormat: 'scss',
+                cssVarMap: function(sprite) {
+                  sprite.name = `sprite-${folder}-${sprite.name}`;
+                },
+                cssSpritesheetName: `spritesheet-${folder}`,
+                cssOpts: {
+                  functions: false
+                },
+                algorithm: 'binary-tree',
+                padding: 4
+            }));
+        spriteData.img.pipe(gulp.dest(`${DEST}/images/`));
+        spriteData.css.pipe(gulp.dest(`${SRC}/scss/module/`));
+    });
+});
+gulp.task('sprite', gulp.series('spritesmith'));
 
 
 // serve
