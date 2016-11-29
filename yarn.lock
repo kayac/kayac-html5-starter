@@ -1021,7 +1021,7 @@ character-parser@^2.1.1:
   dependencies:
     is-regex "^1.0.3"
 
-chokidar@^1.4.3, chokidar@^1.5.2:
+chokidar@^1.4.3, chokidar@^1.5.2, chokidar@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.6.1.tgz#2f4447ab5e96e50fb3d789fd90d4c72e0e4c70c2"
   dependencies:
@@ -1095,6 +1095,10 @@ clone@^1.0.0:
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
+
+colors@0.6.*:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-0.6.2.tgz#2423fe6678ac0c5dae8852e5d0e5be08c997abcc"
 
 combine-source-map@~0.7.1:
   version "0.7.2"
@@ -3459,6 +3463,12 @@ optimist@~0.3, optimist@~0.3.5:
   dependencies:
     wordwrap "~0.0.2"
 
+optimist@0.5.*:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.5.2.tgz#85c8c1454b3315e4a78947e857b1df033450bfbc"
+  dependencies:
+    wordwrap "~0.0.2"
+
 options@>=0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
@@ -4192,6 +4202,14 @@ resp-modifier@^5.0.0:
   dependencies:
     debug "^2.2.0"
     minimatch "^2.0.1"
+
+rev-logger@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rev-logger/-/rev-logger-1.1.0.tgz#7f3592519a6131c3ae32e1a4f7fac23f8cc6375f"
+  dependencies:
+    chokidar "^1.6.1"
+    colors "0.6.*"
+    optimist "0.5.*"
 
 right-align@^0.1.1:
   version "0.1.3"
