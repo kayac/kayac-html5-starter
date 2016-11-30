@@ -29,6 +29,7 @@
     "gulp-pleeease": "2.0.*",
     "gulp-pug": "^3.0.3",
     "gulp-sass": "2.1.*",
+    "gulp-sass-glob": "^1.0.6",
     "gulp-watch": "^4.3.8",
     "jquery": "2.*",
     "read-config": "2.0.*",

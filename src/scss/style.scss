@@ -5,7 +5,4 @@
 @import 'variable', 'function', 'mixin', 'keyframes';
 
 // modules
-@import 'module/wrapper';
-
-// pages
-@import 'page/index';
+@import 'module/*';
