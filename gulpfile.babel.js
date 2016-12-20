@@ -19,7 +19,7 @@ import RevLogger from 'rev-logger';
 const SRC = './src';
 const CONFIG = './src/config';
 const HTDOCS = './public';
-const BASE_PATH = '/';
+const BASE_PATH = '';
 const DEST = `${HTDOCS}${BASE_PATH}`;
 
 const revLogger = new RevLogger({
@@ -73,7 +73,7 @@ gulp.task('browser-sync', () => {
         server: {
             baseDir: HTDOCS
         },
-        startPath: BASE_PATH,
+        startPath: `${BASE_PATH}/`,
         ghostMode: false
     });
 
