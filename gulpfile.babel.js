@@ -59,7 +59,8 @@ gulp.task('pug', () => {
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
         .pipe(pug({
             locals: locals,
-            pretty: true
+            pretty: true,
+            basedir: `${SRC}/pug`
         }))
         .pipe(gulp.dest(`${DEST}`));
 });
