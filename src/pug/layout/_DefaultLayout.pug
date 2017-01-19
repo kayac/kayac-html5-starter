@@ -60,11 +60,11 @@ html(lang="ja")
 
     // stylesheet
     block StylesheetBlock
-      link(rel="stylesheet", href="css/style.css?v="+versions["style.css"])
+      link(rel="stylesheet", href=basePath + "/css/style.css?v="+versions["style.css"])
   body
     .wrapper
       block ContentBlock
 
     // javascript
     block JavascriptBlock
-      script(src="js/script.js?v="+versions["script.js"])
+      script(src=basePath + "/js/script.js?v="+versions["script.js"])
