@@ -57,7 +57,7 @@ gulp.task('pug', () => {
     locals.versions = revLogger.versions();
     locals.basePath = BASE_PATH;
     
-    return gulp.src([`${SRC}/pug/**/[!_]*.pug`, `!${SRC}/pug/_**/*`])
+    return gulp.src([`${SRC}/pug/**/[!_]*.pug`, `!${SRC}/pug/**/_*/**/*`])
         .pipe(pug({
             locals: locals,
             pretty: true,
