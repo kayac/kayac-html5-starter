@@ -1,18 +1,18 @@
 'use strict';
 
 // import
-import gulp from 'gulp';
-import source from 'vinyl-source-stream';
-import sass from 'gulp-sass';
-import sassGlob from 'gulp-sass-glob';
-import pleeease from 'gulp-pleeease';
-import browserify from 'browserify';
-import babelify from 'babelify';
-import pug from 'gulp-pug';
-import browserSync from 'browser-sync';
-import readConfig from 'read-config';
-import watch from 'gulp-watch';
-import RevLogger from 'rev-logger';
+const gulp = require('gulp');
+const source = require('vinyl-source-stream');
+const sass = require('gulp-sass');
+const sassGlob = require('gulp-sass-glob');
+const pleeease = require('gulp-pleeease');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const pug = require('gulp-pug');
+const browserSync = require('browser-sync');
+const readConfig = require('read-config');
+const watch = require('gulp-watch');
+const RevLogger = require('rev-logger');
 
 
 // const
