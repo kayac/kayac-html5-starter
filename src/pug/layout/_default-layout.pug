@@ -1,4 +1,4 @@
-block ConfigBlock
+block config-block
   - title = page_name ? [page_name, site_name].join(' | ') : site_name
 
 doctype html
@@ -59,12 +59,12 @@ html(lang="ja")
       link(rel="canonical" href=url)
 
     // stylesheet
-    block StylesheetBlock
+    block stylesheet-block
       link(rel="stylesheet", href=basePath + "/css/style.css?v="+versions["style.css"])
   body
     .wrapper
-      block ContentBlock
+      block content-block
 
     // javascript
-    block JavascriptBlock
+    block javascript-block
       script(src=basePath + "/js/script.js?v="+versions["script.js"])
