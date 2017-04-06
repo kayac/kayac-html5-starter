@@ -3,20 +3,20 @@
   @return unquote("resolve(#{$url}");
 }
 
-@function width($url, $scale: 1.0) {
-  @return unquote("width(#{$url}, #{1 / $scale})");
+@function width($url, $density: 1) {
+  @return unquote("width(#{$url}, #{$density})");
 }
 
-@function height($url, $scale: 1.0) {
-  @return unquote("height(#{$url}, #{1 / $scale})");
+@function height($url, $density: 1) {
+  @return unquote("height(#{$url}, #{$density})");
 }
 
-@function size($url, $scale: 1.0) {
-  @return unquote("size(#{$url}, #{1 / $scale})");
+@function size($url, $density: 1) {
+  @return unquote("size(#{$url}, #{$density})");
 }
 
-@function inline($url, $scale: 1.0) {
-  @return unquote("inline(#{$url}, #{1 / $scale})");
+@function inline($url) {
+  @return unquote("inline(#{$url})");
 }
 
 
