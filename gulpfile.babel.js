@@ -40,8 +40,8 @@ gulp.task('sass', () => {
             require('postcss-assets')({
                 loadPaths: [ 'img/' ],
                 basePath: './public',
-                // 相対位置の場合はコメントアウト
-                relative: './css/',
+                // relative: './css/', // 相対位置の場合はコメントアウト
+                // cachebuster: true,
             })
         ]))
         .pipe(gulp.dest(`${DEST}/css`));
