@@ -1,22 +1,22 @@
 // postcss-assets function
 @function resolve($url, $scale: 1.0) {
-  @return unquote("resolve(#{$url}, #{$scale})");
+  @return unquote("resolve(#{$url}, #{1 / $scale})");
 }
 
 @function width($url, $scale: 1.0) {
-  @return unquote("width(#{$url}, #{$scale})");
+  @return unquote("width(#{$url}, #{1 / $scale})");
 }
 
 @function height($url, $scale: 1.0) {
-  @return unquote("height(#{$url}, #{$scale})");
+  @return unquote("height(#{$url}, #{1 / $scale})");
 }
 
 @function size($url, $scale: 1.0) {
-  @return unquote("size(#{$url}, #{$scale})");
+  @return unquote("size(#{$url}, #{1 / $scale})");
 }
 
 @function inline($url, $scale: 1.0) {
-  @return unquote("inline(#{$url}, #{$scale})");
+  @return unquote("inline(#{$url}, #{1 / $scale})");
 }
 
 
