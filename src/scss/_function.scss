@@ -1,6 +1,6 @@
 // postcss-assets function
 @function resolve($url) {
-  @return unquote("resolve(#{$url}");
+  @return unquote("resolve(#{$url})");
 }
 
 @function width($url, $density: 1) {
