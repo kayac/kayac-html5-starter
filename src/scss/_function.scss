@@ -1,6 +1,6 @@
 // postcss-assets function
-@function resolve($url, $scale: 1.0) {
-  @return unquote("resolve(#{$url}, #{1 / $scale})");
+@function resolve($url) {
+  @return unquote("resolve(#{$url}");
 }
 
 @function width($url, $scale: 1.0) {
@@ -20,6 +20,6 @@
 }
 
 
-@function image-url($url, $scale: 1.0) {
-    @return resolve($url, $scale);
+@function image-url($url) {
+    @return resolve($url);
 }
