@@ -6,6 +6,7 @@ import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import pleeease from 'gulp-pleeease';
+import watchify from 'watchify';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import pug from 'gulp-pug';
@@ -41,15 +42,15 @@ gulp.task('sass', () => {
 gulp.task('css', gulp.series('sass'));
 
 // js
-gulp.task('browserify', () => {
-    return browserify(`${SRC}/js/script.js`)
+gulp.task('watchify', () => {
+    return watchify(browserify(`${SRC}/js/script.js`))
         .transform(babelify)
         .bundle()
         .pipe(source('script.js'))
         .pipe(gulp.dest(`${DEST}/js`));
 });
 
-gulp.task('js', gulp.parallel('browserify'));
+gulp.task('js', gulp.parallel('watchify'));
 
 // html
 gulp.task('pug', () => {
@@ -80,7 +81,7 @@ gulp.task('browser-sync', () => {
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
+    watch([`${SRC}/js/**/*.js`], gulp.series('watchify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.yml`
