@@ -6,6 +6,7 @@ import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import pleeease from 'gulp-pleeease';
+import postcss from 'gulp-postcss';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import pug from 'gulp-pug';
@@ -35,6 +36,14 @@ gulp.task('sass', () => {
         .pipe(sassGlob())
         .pipe(sass())
         .pipe(pleeease(config))
+        .pipe(postcss([
+            require('postcss-assets')({
+                loadPaths: [ 'img/' ],
+                basePath: './public',
+                // relative: './css/', // 相対位置の場合はコメントアウト
+                // cachebuster: true,
+            })
+        ]))
         .pipe(gulp.dest(`${DEST}/css`));
 });
 

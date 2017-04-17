@@ -1,3 +1,25 @@
-@function image-url ($url) {
-    @return url("../img/#{$url}");
+// postcss-assets function
+@function resolve($url) {
+  @return unquote("resolve(#{$url})");
+}
+
+@function width($url, $density: 1) {
+  @return unquote("width(#{$url}, #{$density})");
+}
+
+@function height($url, $density: 1) {
+  @return unquote("height(#{$url}, #{$density})");
+}
+
+@function size($url, $density: 1) {
+  @return unquote("size(#{$url}, #{$density})");
+}
+
+@function inline($url) {
+  @return unquote("inline(#{$url})");
+}
+
+
+@function image-url($url) {
+    @return resolve($url);
 }
