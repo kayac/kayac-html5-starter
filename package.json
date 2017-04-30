@@ -20,7 +20,6 @@
   "author": "Kayac Inc.",
   "license": "MIT",
   "devDependencies": {
-    "babel": "6.3.*",
     "babel-preset-es2015": "6.3.*",
     "babelify": "7.2.*",
     "browser-sync": "2.11.*",
