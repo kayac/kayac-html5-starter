@@ -24,8 +24,8 @@ const BASE_PATH = '';
 const DEST = `${HTDOCS}${BASE_PATH}`;
 
 const revLogger = new RevLogger({
-    'style.css': `${DEST}/css/style.css`,
-    'script.js': `${DEST}/js/script.js`
+    'style.css': `${DEST}css/style.css`,
+    'script.js': `${DEST}js/script.js`
 });
 
 
@@ -36,7 +36,7 @@ gulp.task('sass', () => {
         .pipe(sassGlob())
         .pipe(sass())
         .pipe(pleeease(config))
-        .pipe(gulp.dest(`${DEST}/css`));
+        .pipe(gulp.dest(`${DEST}css`));
 });
 
 gulp.task('css', gulp.series('sass'));
@@ -47,7 +47,7 @@ gulp.task('watchify', () => {
         .transform(babelify)
         .bundle()
         .pipe(source('script.js'))
-        .pipe(gulp.dest(`${DEST}/js`));
+        .pipe(gulp.dest(`${DEST}js`));
 });
 
 gulp.task('js', gulp.parallel('watchify'));
