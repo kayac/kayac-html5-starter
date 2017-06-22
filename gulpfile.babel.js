@@ -2,6 +2,7 @@
 
 // import
 import gulp from 'gulp';
+import gutil from 'gutil';
 import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
@@ -46,6 +47,11 @@ gulp.task('watchify', () => {
     return watchify(browserify(`${SRC}/js/script.js`))
         .transform(babelify)
         .bundle()
+        .on("error", function(err) {
+            gutil.log(err.message);
+            gutil.log(err.codeFrame);
+            this.emit('end');
+        })           
         .pipe(source('script.js'))
         .pipe(gulp.dest(`${DEST}/js`));
 });
