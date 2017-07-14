@@ -9,6 +9,7 @@ import sassGlob from 'gulp-sass-glob';
 import pleeease from 'gulp-pleeease';
 import watchify from 'watchify';
 import browserify from 'browserify';
+import vueify from 'vueify';
 import babelify from 'babelify';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
@@ -45,6 +46,7 @@ gulp.task('css', gulp.series('sass'));
 // js
 gulp.task('watchify', () => {
     return watchify(browserify(`${SRC}/js/script.js`))
+        .transform(vueify)
         .transform(babelify)
         .bundle()
         .on("error", function(err) {

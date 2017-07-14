@@ -38,6 +38,8 @@
     "reset.css": "^2.0.2",
     "rev-logger": "1.1.1",
     "vinyl-source-stream": "1.1.*",
+    "vue": "^2.4.1",
+    "vueify": "^9.4.1",
     "watchify": "^3.9.0"
   },
   "babel": {
