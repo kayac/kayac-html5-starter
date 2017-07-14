@@ -1,10 +1,8 @@
-import Sample from './lib/Sample';
-import $ from 'jquery';
+import Vue from 'vue';
 
-const sample = new Sample({
-    name: 'world'
-});
+import Root from './components/root.vue';
 
-$('.wrapper').on('click', () => {
-    console.log(`hello, ${sample.name}.`);
+new Vue({
+    el: document.getElementById('root'),
+    render: (h) => h(Root)
 });
