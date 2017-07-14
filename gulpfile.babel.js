@@ -89,7 +89,7 @@ gulp.task('browser-sync', () => {
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    watch([`${SRC}/js/**/*.js`], gulp.series('watchify', browserSync.reload));
+    watch([`${SRC}/js/**/*.js`, `${SRC}/js/components**/*.vue`], gulp.series('watchify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.yml`
