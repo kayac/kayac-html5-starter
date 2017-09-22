@@ -1,5 +1,5 @@
 <template lang="pug">
-  .root {{ hello }}
+  .root {{ message }}
 </template>
 
 <script>
@@ -7,7 +7,7 @@
       name: 'root',
       data () {
           return {
-              hello: 'world'
+              message: 'hello, world.'
           }
       }
   }
