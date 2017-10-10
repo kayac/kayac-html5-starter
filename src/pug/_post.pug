@@ -1,14 +1,11 @@
 extends /layout/_default-layout
 
 prepend config-block
-  - page_name = ''
+  - page_name = meta.title
 
 //- append stylesheet-block
 
 //- append javascript-block
 
 block content-block
-  ul
-    each post in archive
-      li
-        a(href=`${post.slug}.html`)= post.title
+  .content!= body

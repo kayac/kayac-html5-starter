@@ -11,6 +11,7 @@ import watchify from 'watchify';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import pug from 'gulp-pug';
+import postman from 'gulp-postman';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
@@ -65,8 +66,12 @@ gulp.task('pug', () => {
     locals.basePath = BASE_PATH;
     
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
-        .pipe(pug({
+        .pipe(postman({
             locals: locals,
+            markdown: 'posts/*.md',
+            template: `${SRC}/pug/_post.pug`
+        }))
+        .pipe(pug({
             pretty: true,
             basedir: `${SRC}/pug`
         }))
