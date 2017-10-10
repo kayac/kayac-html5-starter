@@ -28,6 +28,7 @@
     "browserify": "12.0.*",
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
     "gulp-pleeease": "2.0.*",
+    "gulp-postman": "^1.0.2",
     "gulp-pug": "^3.0.3",
     "gulp-sass": "2.1.*",
     "gulp-sass-glob": "^1.0.6",
