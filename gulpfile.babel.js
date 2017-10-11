@@ -69,7 +69,10 @@ gulp.task('pug', () => {
         .pipe(massProduction({
             locals: locals,
             markdown: 'posts/*.md',
-            template: `${SRC}/pug/_post.pug`
+            template: `${SRC}/pug/_post.pug`,
+            hrefRule: function (slug, meta) {
+                return `${meta.category}/${slug}`;
+            }
         }))
         .pipe(pug({
             pretty: true,

@@ -11,4 +11,4 @@ block content-block
   ul
     each post in archive
       li
-        a(href=`${post.slug}.html`)= post.title
+        a(href=post.href)= post.title

@@ -1,5 +1,6 @@
 ---
 title: emoji😄 only sns
+category: frontend
 ---
 世界一安全安心なSNSを作りました。
 
