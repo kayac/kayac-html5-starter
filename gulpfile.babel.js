@@ -77,7 +77,7 @@ gulp.task('pug', () => {
                 top: {
                     template: `${SRC}/pug/index.pug`,
                     hrefRule: function () {
-                        return 'index.html';
+                        return '';
                     }
                 },
                 category: {

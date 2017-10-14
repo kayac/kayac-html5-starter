@@ -9,6 +9,6 @@ prepend config-block
 
 block content-block
   ul
-    each post in posts
+    each post in massProduction.posts
       li
-        a(href=post.href)= post.title
+        a(href=`/${post.href}`)= post.title
