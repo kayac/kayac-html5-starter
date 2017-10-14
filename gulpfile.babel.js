@@ -71,16 +71,13 @@ gulp.task('pug', () => {
             markdown: 'posts/*.md',
             template: `${SRC}/pug/post.pug`,
             hrefRule: function (slug, meta) {
-                return `${meta.category}/${slug}`;
+                return `${meta.category || 'no-category'}/${slug}`;
             },
             archive: {
                 top: {
                     template: `${SRC}/pug/index.pug`,
-                    slugRule: function (meta) {
-                        return true;
-                    },
-                    hrefRule: function (slug, meta) {
-                        return '';
+                    hrefRule: function () {
+                        return 'index.html';
                     }
                 },
                 category: {
