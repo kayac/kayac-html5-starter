@@ -27,7 +27,7 @@
     "browser-sync": "2.11.*",
     "browserify": "12.0.*",
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
-    "gulp-mass-production": "^1.1.0",
+    "gulp-mass-production": "2.0.0",
     "gulp-pleeease": "2.0.*",
     "gulp-pug": "^3.0.3",
     "gulp-sass": "2.1.*",
