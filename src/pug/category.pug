@@ -1,0 +1,14 @@
+extends /layout/_default-layout
+
+prepend config-block
+  - page_name = 'category'
+
+//- append stylesheet-block
+
+//- append javascript-block
+
+block content-block
+  ul
+    each post in archive
+      li
+        a(href=post.href)= post.title

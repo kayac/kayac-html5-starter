@@ -69,9 +69,29 @@ gulp.task('pug', () => {
         .pipe(massProduction({
             locals: locals,
             markdown: 'posts/*.md',
-            template: `${SRC}/pug/_post.pug`,
+            template: `${SRC}/pug/post.pug`,
             hrefRule: function (slug, meta) {
                 return `${meta.category}/${slug}`;
+            },
+            archive: {
+                top: {
+                    template: `${SRC}/pug/index.pug`,
+                    slugRule: function (meta) {
+                        return true;
+                    },
+                    hrefRule: function (slug, meta) {
+                        return '';
+                    }
+                },
+                category: {
+                    template: `${SRC}/pug/category.pug`,
+                    slugRule: function (meta) {
+                        return meta.category;
+                    },
+                    hrefRule: function (slug, meta) {
+                        return `category/${slug}`;
+                    }
+                }
             }
         }))
         .pipe(pug({
