@@ -17,7 +17,10 @@ html(lang="ja")
 
     //- IEで「互換モード」で表示されるのを防ぐための指定
     meta(http-equiv="X-UA-Compatible", content="IE=Edge")
-      
+
+    //- iOSで電話番号に見える数字をリンクに設定する機能を無効にする
+    meta(name="format-detection" content="telephone=no")
+
     // smartphone meta
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no")
     if webclipicon_url
