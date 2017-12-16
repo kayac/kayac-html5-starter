@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import Root from './components/root.vue';
+import Root from './components/Root.vue';
 
 new Vue({
     el: document.getElementById('root'),
