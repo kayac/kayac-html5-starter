@@ -1,13 +1,14 @@
 extends /layout/_default-layout
 
 prepend config-block
-  - page_name = ''
+  - page_name = `category: ${massProduction.slug}`
 
 //- append stylesheet-block
 
 //- append javascript-block
 
 block content-block
+  h2= page_name
   ul
     each post in massProduction.posts
       li

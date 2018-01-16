@@ -11,6 +11,7 @@ import watchify from 'watchify';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import pug from 'gulp-pug';
+import massProduction from 'gulp-mass-production';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
@@ -67,8 +68,32 @@ gulp.task('pug', () => {
     };
 
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
-        .pipe(pug({
+        .pipe(massProduction({
             locals: locals,
+            markdown: 'posts/*.md',
+            template: `${SRC}/pug/post.pug`,
+            hrefRule: function (slug, meta) {
+                return `${meta.category || 'no-category'}/${slug}`;
+            },
+            archive: {
+                top: {
+                    template: `${SRC}/pug/index.pug`,
+                    hrefRule: function () {
+                        return '';
+                    }
+                },
+                category: {
+                    template: `${SRC}/pug/category.pug`,
+                    slugRule: function (meta) {
+                        return meta.category;
+                    },
+                    hrefRule: function (slug, meta) {
+                        return `category/${slug}`;
+                    }
+                }
+            }
+        }))
+        .pipe(pug({
             pretty: true,
             basedir: `${SRC}/pug`
         }))

@@ -66,6 +66,11 @@ html(lang="ja")
     .wrapper
       block content-block
 
+      .sidebar
+        each href, slug in massProduction.siteMap.category
+          .sidebar__item
+            a(href=`/${href}`)= slug
+
     // javascript
     block javascript-block
       script(src=basePath + "/js/script.js?v="+versions["script.js"])

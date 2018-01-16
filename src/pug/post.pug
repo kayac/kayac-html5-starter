@@ -1,14 +1,11 @@
 extends /layout/_default-layout
 
 prepend config-block
-  - page_name = ''
+  - page_name = massProduction.meta.title
 
 //- append stylesheet-block
 
 //- append javascript-block
 
 block content-block
-  ul
-    each post in massProduction.posts
-      li
-        a(href=`/${post.href}`)= post.title
+  .content!= massProduction.body
