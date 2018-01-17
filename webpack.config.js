@@ -1,6 +1,8 @@
+import { SRC } from './config'
+
 module.exports = {
   entry: {
-    script: "./src/js/script.js",
+    script: `${SRC}/js/script.js`,
   },
   output: {
     filename: "[name].js"

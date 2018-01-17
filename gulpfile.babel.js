@@ -16,13 +16,8 @@ import readConfig from 'read-config';
 import watch from 'gulp-watch';
 import RevLogger from 'rev-logger';
 
-
 // const
-const SRC = './src';
-const CONFIG = './src/config';
-const HTDOCS = './public';
-const BASE_PATH = '';
-const DEST = `${HTDOCS}${BASE_PATH}`;
+import { SRC, DEST, BASE_PATH, HTDOCS, CONFIG } from './config'
 
 const revLogger = new RevLogger({
     'style.css': `${DEST}/css/style.css`,
