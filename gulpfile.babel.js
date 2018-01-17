@@ -43,18 +43,23 @@ gulp.task('sass', () => {
 gulp.task('css', gulp.series('sass'));
 
 // js
-gulp.task('watchify', () => {
-    return watchify(browserify(`${SRC}/js/script.js`))
-        .transform(babelify)
-        .bundle()
-        .on("error", function(err) {
-            gutil.log(err.message);
-            gutil.log(err.codeFrame);
-            this.emit('end');
-        })
-        .pipe(source('script.js'))
-        .pipe(gulp.dest(`${DEST}/js`));
-});
+{
+    const option = {};
+    option.cache        = {};
+    option.packageCache = {};
+    gulp.task('watchify', () => {
+        return watchify(browserify(`${SRC}/js/script.js`, option))
+            .transform(babelify)
+            .bundle()
+            .on("error", function(err) {
+                gutil.log(err.message);
+                gutil.log(err.codeFrame);
+                this.emit('end');
+            })           
+            .pipe(source('script.js'))
+            .pipe(gulp.dest(`${DEST}/js`));
+    });
+}
 
 gulp.task('js', gulp.parallel('watchify'));
 
