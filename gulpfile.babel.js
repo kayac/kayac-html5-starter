@@ -7,9 +7,9 @@ import source from 'vinyl-source-stream';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import pleeease from 'gulp-pleeease';
-import watchify from 'watchify';
-import browserify from 'browserify';
-import babelify from 'babelify';
+import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
+import devServer from 'webpack-dev-server';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import readConfig from 'read-config';
@@ -43,20 +43,13 @@ gulp.task('sass', () => {
 gulp.task('css', gulp.series('sass'));
 
 // js
-gulp.task('watchify', () => {
-    return watchify(browserify(`${SRC}/js/script.js`))
-        .transform(babelify)
-        .bundle()
-        .on("error", function(err) {
-            gutil.log(err.message);
-            gutil.log(err.codeFrame);
-            this.emit('end');
-        })
-        .pipe(source('script.js'))
+gulp.task('webpack', () => {
+    const config = require('./webpack.config')
+    return webpackStream(config, webpack)
         .pipe(gulp.dest(`${DEST}/js`));
 });
 
-gulp.task('js', gulp.parallel('watchify'));
+gulp.task('js', gulp.parallel('webpack'));
 
 // html
 gulp.task('pug', () => {
@@ -89,7 +82,7 @@ gulp.task('browser-sync', () => {
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    watch([`${SRC}/js/**/*.js`], gulp.series('watchify', browserSync.reload));
+    // watch([`${SRC}/js/**/*.js`], gulp.series('watchify', browserSync.reload));
     watch([
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.yml`
