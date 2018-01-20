@@ -50,7 +50,14 @@ gulp.task('css', gulp.series('sass'));
     option.packageCache = {};
     gulp.task('watchify', () => {
         return watchify(browserify(`${SRC}/js/script.js`, option))
-            .transform(vueify)
+            .transform(vueify, {
+                sass: {
+                    includePaths: [
+                        'node_modules',
+                        `${SRC}/scss`
+                    ]
+                }
+            })
             .transform(babelify)
             .bundle()
             .on("error", function(err) {

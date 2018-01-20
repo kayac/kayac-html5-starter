@@ -3,6 +3,7 @@
 </template>
 
 <style lang="scss" scoped>
+@import 'config';
 </style>
 
 <script>
