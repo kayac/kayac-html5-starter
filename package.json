@@ -41,10 +41,7 @@
     "vinyl-source-stream": "2.0.*",
     "vue": "^2.4.1",
     "vueify": "^9.4.1",
-<<<<<<< HEAD
     "vuex": "^2.4.0",
-=======
->>>>>>> feature/vueify
     "watchify": "^3.9.0"
   },
   "babel": {

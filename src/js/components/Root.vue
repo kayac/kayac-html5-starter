@@ -1,5 +1,5 @@
 <template lang="pug">
-.root {{ message }}
+.root(v-on:click="changeSampleName") {{ sampleMessage }}
 </template>
 
 <style lang="scss" scoped>
@@ -7,12 +7,15 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'root',
-  data () {
-    return {
-      message: 'hello, world.'
-    }
+  computed: {
+    ...mapGetters([ 'sampleMessage' ])
+  },
+  methods: {
+    ...mapActions([ 'changeSampleName' ])
   }
 };
 </script>
