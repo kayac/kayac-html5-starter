@@ -1,17 +1,21 @@
 <template lang="pug">
-  .root(v-on:click="changeSampleName") {{ sampleMessage }}
+.root(v-on:click="changeSampleName") {{ sampleMessage }}
 </template>
 
-<script>
-  import { mapGetters, mapActions } from 'vuex';
+<style lang="scss" scoped>
+@import 'config';
+</style>
 
-  export default {
-      name: 'root',
-      computed: {
-          ...mapGetters([ 'sampleMessage' ])
-      },
-      methods: {
-          ...mapActions([ 'changeSampleName' ])
-      }
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'root',
+  computed: {
+    ...mapGetters([ 'sampleMessage' ])
+  },
+  methods: {
+    ...mapActions([ 'changeSampleName' ])
   }
+};
 </script>
