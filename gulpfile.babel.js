@@ -44,28 +44,35 @@ gulp.task('sass', () => {
 gulp.task('css', gulp.series('sass'));
 
 // js
-gulp.task('watchify', () => {
-    return watchify(browserify(`${SRC}/js/script.js`))
-        .transform(vueify)
-        .transform(babelify)
-        .bundle()
-        .on("error", function(err) {
-            gutil.log(err.message);
-            gutil.log(err.codeFrame);
-            this.emit('end');
-        })           
-        .pipe(source('script.js'))
-        .pipe(gulp.dest(`${DEST}/js`));
-});
+{
+    const option = {};
+    option.cache        = {};
+    option.packageCache = {};
+    gulp.task('watchify', () => {
+        return watchify(browserify(`${SRC}/js/script.js`, option))
+            .transform(vueify)
+            .transform(babelify)
+            .bundle()
+            .on("error", function(err) {
+                gutil.log(err.message);
+                gutil.log(err.codeFrame);
+                this.emit('end');
+            })
+            .pipe(source('script.js'))
+            .pipe(gulp.dest(`${DEST}/js`));
+    });
+}
 
 gulp.task('js', gulp.parallel('watchify'));
 
 // html
 gulp.task('pug', () => {
-    const locals = readConfig(`${CONFIG}/meta.yml`);
-    locals.versions = revLogger.versions();
-    locals.basePath = BASE_PATH;
-    
+    const locals = {
+        meta: readConfig(`${CONFIG}/meta.yml`),
+        versions: revLogger.versions(),
+        basePath: BASE_PATH
+    };
+
     return gulp.src(`${SRC}/pug/**/[!_]*.pug`)
         .pipe(pug({
             locals: locals,
