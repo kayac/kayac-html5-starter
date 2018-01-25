@@ -9,15 +9,15 @@ import sassGlob from 'gulp-sass-glob';
 import pleeease from 'gulp-pleeease';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
-import devServer from 'webpack-dev-server';
+import browserSync from 'browser-sync'
 import pug from 'gulp-pug';
-import browserSync from 'browser-sync';
+import path from 'path';
 import readConfig from 'read-config';
 import watch from 'gulp-watch';
 import RevLogger from 'rev-logger';
 
 // const
-import { SRC, DEST, BASE_PATH, HTDOCS, CONFIG } from './config'
+import { SRC, DEST, BASE_PATH, HTDOCS, CONFIG, PORT } from './config'
 
 const revLogger = new RevLogger({
     'style.css': `${DEST}/css/style.css`,
@@ -70,22 +70,15 @@ gulp.task('html', gulp.series('pug'));
 gulp.task('browser-sync', () => {
     browserSync({
         server: {
-            baseDir: HTDOCS
+            baseDir: HTDOCS,
         },
         startPath: `${BASE_PATH}/`,
-        ghostMode: false
+        ghostMode: false,
     });
 
-    watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    // watch([`${SRC}/js/**/*.js`], gulp.series('watchify', browserSync.reload));
-    watch([
-        `${SRC}/pug/**/*.pug`,
-        `${SRC}/config/meta.yml`
-    ], gulp.series('pug', browserSync.reload));
-
-    revLogger.watch((changed) => {
-        gulp.series('pug', browserSync.reload)();
-    });
+    watch([`${SRC}/js/**/*.js`], gulp.series('js', browserSync.reload));
+    watch([`${SRC}/pug/**/*.pug`, `${SRC}/meta.yml`], gulp.series('html', browserSync.reload));
+    watch([`${SRC}/scss/**/*.scss`], gulp.series('css', browserSync.reload));
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
