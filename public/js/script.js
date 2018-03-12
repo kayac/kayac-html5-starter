@@ -9861,11 +9861,28 @@ var _jquery2 = _interopRequireDefault(_jquery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var sample = new _Sample2.default({
-    name: 'world'
+  name: 'world'
 });
 
 (0, _jquery2.default)('.wrapper').on('click', function () {
-    console.log('hello, ' + sample.name + '.');
+  console.log('hello, ' + sample.name + '.');
 });
+
+var localVideo = document.getElementById('local_video');
+var localStream = void 0;
+
+// start local localVideo
+document.getElementById('start').onclick = function startVideo() {
+  navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(function (stream) {
+    // success
+    localStream = stream;
+    console.log(localVideo);
+    localVideo.src = window.URL.createObjectURL(localStream);
+  }).catch(function (error) {
+    // error
+    console.error('mediaDevice.getUserMedia() error:', error);
+    return;
+  });
+};
 
 },{"./lib/Sample":3,"jquery":2}]},{},[4]);

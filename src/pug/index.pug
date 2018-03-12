@@ -8,11 +8,6 @@ prepend config-block
 //- append javascript-block
 
 block content-block
-  | hello, world!
   
-  video(width="640", height="480", autoplay)
-  image(src="", type="")
-  canvas(style="display:none;", width="640", height="480")
-  #wrap
-    button.capture capture
-    button.stop stop
+  button#start Start
+  video#local_video(autoplay)
