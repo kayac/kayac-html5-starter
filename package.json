@@ -15,10 +15,13 @@
     "extract-text-webpack-plugin": "next",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.1.0",
     "node-sass": "^4.8.3",
     "pug": "^2.0.3",
+    "pug-html-loader": "^1.1.5",
     "pug-loader": "^2.4.0",
+    "read-config": "^2.0.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
@@ -29,5 +32,8 @@
     "presets": [
       "env"
     ]
+  },
+  "dependencies": {
+    "js-yaml-loader": "^0.1.0"
   }
 }

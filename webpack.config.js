@@ -1,5 +1,6 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const readConfig = require('read-config')
 
 const path = require('path');
 
@@ -59,7 +60,18 @@ module.exports = [
         },
         {
           test: /\.pug$/,
-          loader: 'pug-loader',
+          use: [
+            'html-loader',
+            {
+              loader: 'pug-html-loader',
+              options: {
+                data: {
+                  ...readConfig('./src/config.yml'),
+                  meta: readConfig('./src/pug/meta.yml')
+                },
+              }
+            }
+          ],
         },
         {
           test: /\.(jpe?g|png|gif)$/,
@@ -72,6 +84,10 @@ module.exports = [
           test: /\.scss$/,
           use: [ 'style-loader', 'css-loader', 'sass-loader' ],
         },
+        {
+          test: /.ya?ml$/,
+          loader: 'js-yaml-loader',
+        }
       ]
     },
 
