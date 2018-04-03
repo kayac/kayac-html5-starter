@@ -1,0 +1,11 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "webpack template",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.4.1",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
