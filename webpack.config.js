@@ -1,7 +1,35 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const path = require('path')
+const path = require('path');
+
+const HTMLTemplates = (() =>{
+  const glob = require('glob')
+
+  const templates = []
+
+  const filenames = glob.sync(`./src/pug/page/**/[!_]*.pug`)
+  let files = filenames.map(file => {
+    return {
+      path: file,
+      filename: file
+        .replace('./src/pug/page', '.')
+        .replace(/\.pug$/, '.html'),
+      title: false,
+    }
+  })
+
+  files.forEach(({path, filename}) => {
+    templates.push(new HTMLWebpackPlugin({
+      template: path,
+      filename,
+      title: false,
+      hash: true,
+    }))
+  })
+
+  return templates
+})();
 
 module.exports = [
   // js
@@ -48,17 +76,17 @@ module.exports = [
     },
 
     devServer: {
+      port: 3000,
     },
+
+    cache: true,
 
     resolve: {
       extensions: ['.js', '.json', '*'],
     },
 
     plugins: [
-      new HTMLWebpackPlugin({
-        filename: `index.html`,
-        template: `./src/pug/page/index.pug`,
-      }),
+      ...HTMLTemplates,
     ],
   },
 ]

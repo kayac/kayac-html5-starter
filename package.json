@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server"
+    "build": "webpack --mode production --progress",
+    "start": "webpack-dev-server --host 0.0.0.0 --inline"
   },
   "devDependencies": {
     "babel-loader": "^7.1.4",
@@ -14,6 +14,7 @@
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "next",
     "file-loader": "^1.1.11",
+    "glob": "^7.1.2",
     "html-webpack-plugin": "^3.1.0",
     "node-sass": "^4.8.3",
     "pug": "^2.0.3",
