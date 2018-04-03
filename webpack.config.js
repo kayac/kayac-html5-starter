@@ -69,6 +69,8 @@ module.exports = [
                   ...readConfig('./src/config.yml'),
                   meta: readConfig('./src/pug/meta.yml')
                 },
+                basedir: path.resolve('./src/pug/'),
+                pretty: true,
               }
             }
           ],
