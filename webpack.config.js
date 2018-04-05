@@ -2,9 +2,9 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const readConfig = require('read-config')
 const glob = require('glob')
-
 const path = require('path')
 
+// base config
 const SRC = './src'
 const DEST = './public'
 
@@ -29,19 +29,19 @@ const HTMLTemplates = (() =>{
 })()
 
 module.exports = [
-  // js
   {
+    // エントリーファイル
     entry: {
       'js/script.js': `${SRC}/js/script.js`,
       'css/style.css': `${SRC}/scss/style.scss`,
     },
-
+    // 出力するディレクトリ・ファイル名などの設定
     output: {
       path: path.resolve(__dirname, DEST),
       filename: '[name]',
     },
-
     module: {
+      // 各ファイル形式ごとのビルド設定
       rules: [
         {
           test: /\.js$/,
@@ -97,21 +97,23 @@ module.exports = [
         }
       ]
     },
-
+    // webpack-dev-serverの設定
     devServer: {
       host: '0.0.0.0',
       port: 3000,
       contentBase: DEST,
     },
-
+    // キャシュ有効化
     cache: true,
-
+    // 拡張子省略時のpath解決
     resolve: {
       extensions: ['.js', '.json', '*'],
     },
 
     plugins: [
+      // 複数のHTMLファイルを出力する
       ...HTMLTemplates,
+      // style.cssを出力
       new ExtractTextPlugin('[name]')
     ],
   },
