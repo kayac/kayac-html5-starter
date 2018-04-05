@@ -1,2 +1,8 @@
-title: TOP of the WORLD
-keywords: a,b,c
+site_name: site name
+
+keywords: site, keyword
+
+description: description
+
+favicon_url: /favicon.ico
+webclipicon_url: /webclip-icon.png
