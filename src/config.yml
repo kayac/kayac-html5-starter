@@ -1,0 +1,2 @@
+BASE_DIR: ./public
+IMG_DIR: ./public/img

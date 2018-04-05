@@ -2,51 +2,56 @@
   "name": "kayac-html5-starter",
   "version": "0.0.0",
   "description": "kayac-html5-starter development.",
-  "main": "gulpfile.babel.js",
-  "engines": {
-    "node": ">=5.0.0"
-  },
-  "scripts": {
-    "start": "gulp",
-    "serve": "gulp serve",
-    "build": "gulp build",
-    "build-css": "gulp css",
-    "build-js": "gulp js",
-    "build-html": "gulp html"
-  },
-  "keywords": [
-    "gulp"
-  ],
+  "main": "index.js",
   "author": "Kayac Inc.",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production --progress",
+    "start": "webpack-dev-server --host 0.0.0.0 --inline"
+  },
   "devDependencies": {
-    "babel": "6.3.*",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-runtime": "6.23.*",
-    "babel-preset-es2015": "6.3.*",
-    "babel-register": "^6.26.0",
-    "browser-sync": "2.11.*",
-    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
-    "gulp-pleeease": "2.0.*",
-    "gulp-pug": "^3.0.3",
-    "gulp-sass": "2.1.*",
-    "gulp-sass-glob": "^1.0.6",
-    "gulp-watch": "^4.3.8",
-    "gutil": "^1.6.4",
-    "jquery": "2.*",
-    "read-config": "2.0.*",
-    "reset.css": "^2.0.2",
-    "rev-logger": "1.1.1",
-    "vinyl-source-stream": "1.1.*",
-    "webpack": "^3.10.0",
-    "webpack-stream": "^4.0.0"
+    "autoprefixer": "^8.2.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.11",
+    "css-mqpacker": "^6.0.2",
+    "extract-text-webpack-plugin": "next",
+    "file-loader": "^1.1.11",
+    "glob": "^7.1.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.1.0",
+    "js-yaml-loader": "^0.1.0",
+    "node-sass": "^4.8.3",
+    "postcss-loader": "^2.1.3",
+    "pug": "^2.0.3",
+    "pug-html-loader": "^1.1.5",
+    "pug-loader": "^2.4.0",
+    "read-config": "^2.0.0",
+    "sass-loader": "^6.0.7",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "dependencies": {
+    "reset.css": "^2.0.2"
   },
   "babel": {
     "presets": [
-      "es2015"
+      "env"
     ],
     "plugins": [
       "transform-runtime"
     ]
-  }
+  },
+  "browserslist": [
+    "ie >= 11",
+    "ie_mob >= 10",
+    "ff >= 30",
+    "chrome >= 40",
+    "safari >= 8",
+    "opera >= 23",
+    "ios >= 8",
+    "android >= 4.3",
+    "bb >= 10"
+  ]
 }
