@@ -84,7 +84,13 @@ module.exports = [
         },
         {
           test: /\.scss$/,
-          use: [ 'style-loader', 'css-loader', 'postcss-loader','sass-loader' ],
+          use: ExtractTextPlugin.extract({
+            use: [
+              'css-loader',
+              'postcss-loader',
+              'sass-loader'
+            ]
+          })
         },
         {
           test: /.ya?ml$/,
@@ -105,6 +111,7 @@ module.exports = [
 
     plugins: [
       ...HTMLTemplates,
+      new ExtractTextPlugin('[name]')
     ],
   },
 ]
