@@ -12,6 +12,7 @@
   "devDependencies": {
     "autoprefixer": "^8.2.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",
     "css-mqpacker": "^6.0.2",
