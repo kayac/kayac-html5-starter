@@ -31,8 +31,6 @@ const HTMLTemplates = (() =>{
 module.exports = [
   // js
   {
-    mode: 'development',
-
     entry: {
       'js/script.js': `${SRC}/js/script.js`,
       'css/style.css': `${SRC}/scss/style.scss`,
