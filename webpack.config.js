@@ -9,7 +9,7 @@ const SRC = './src'
 const DEST = './public'
 
 // page/**/*.pug -> dist/**/*.html
-const HTMLTemplates = (() =>{
+const htmlTemplates = (() =>{
   const pageDir = `${SRC}/pug/page`
 
   const filepaths = glob.sync(`${pageDir}/**/[!_]*.pug`)
@@ -112,7 +112,7 @@ module.exports = [
 
     plugins: [
       // 複数のHTMLファイルを出力する
-      ...HTMLTemplates,
+      ...htmlTemplates,
       // style.cssを出力
       new ExtractTextPlugin('[name]')
     ],
