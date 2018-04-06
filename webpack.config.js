@@ -60,7 +60,7 @@ module.exports = [
               loader: 'pug-html-loader',
               options: {
                 data: {
-                  ...readConfig(`${SRC}/config.yml`),
+                  ...readConfig(`${SRC}/constants.yml`),
                   meta: readConfig(`${SRC}/pug/meta.yml`)
                 },
                 basedir: path.resolve(`${SRC}/pug/`),
