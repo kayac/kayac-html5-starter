@@ -1,13 +1,15 @@
-// reset
+// reset css
 @import "../../node_modules/reset.css/reset.css";
 
 // SASS
 @import "variable";
 @import "function";
-@import "keyframes";
 @import "mixin";
 
-// base
+// @keyframes
+@import "keyframes";
+
+// base style
 @import "base";
 
 // modules
