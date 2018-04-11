@@ -1,3 +1,4 @@
+// see /src/constants.yml
 @function image-url ($url) {
-    @return url("../img/#{$url}");
+    @return url("/img/#{$url}");
 }
