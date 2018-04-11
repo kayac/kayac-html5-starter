@@ -16,22 +16,22 @@ portfinder.basePort = PORT
 
 // page/**/*.pug -> dist/**/*.html
 const htmlTemplates = (() =>{
-  const pageDir = `${SRC}/pug/page`
+    const pageDir = `${SRC}/pug/page`
 
-  const filepaths = glob.sync(`${pageDir}/**/[!_]*.pug`)
+    const filepaths = glob.sync(`${pageDir}/**/[!_]*.pug`)
 
-  return filepaths.map(filepath => {
-    const template = filepath
-    const filename = filepath
-      .replace(pageDir, '.')
-      .replace(/\.pug$/, '.html')
-    return new HTMLWebpackPlugin({
-      template,
-      filename,
-      title: false,
-      hash: true,
+    return filepaths.map(filepath => {
+        const template = filepath
+        const filename = filepath
+        .replace(pageDir, '.')
+        .replace(/\.pug$/, '.html')
+        return new HTMLWebpackPlugin({
+            template,
+            filename,
+            title: false,
+            hash: true,
+        })
     })
-  })
 })()
 
 const webpackConfig = {
@@ -53,47 +53,47 @@ const webpackConfig = {
                 loader: 'babel-loader',
                 exclude: /(node_modules)/,
                 options: {
-                compact: true,
-                cacheDirectory: true,
+                    compact: true,
+                    cacheDirectory: true,
                 }
             },
             {
                 test: /\.pug$/,
                 use: [
-                'html-loader',
-                {
-                    loader: 'pug-html-loader',
-                    options: {
-                    data: {
-                        ...readConfig(`${SRC}/constants.yml`),
-                        meta: readConfig(`${SRC}/pug/meta.yml`)
-                    },
-                    basedir: path.resolve(`${SRC}/pug/`),
-                    pretty: true,
+                    'html-loader',
+                    {
+                        loader: 'pug-html-loader',
+                        options: {
+                            data: {
+                                ...readConfig(`${SRC}/constants.yml`),
+                                meta: readConfig(`${SRC}/pug/meta.yml`)
+                            },
+                            basedir: path.resolve(`${SRC}/pug/`),
+                            pretty: true,
+                        }
                     }
-                }
                 ],
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
-                name: '[path][name].[ext]'
+                    name: '[path][name].[ext]'
                 }
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                use: [
-                    {
-                    loader: 'css-loader',
-                    options: {
-                        importLoaders: 2,
-                    }
-                    },
-                    'postcss-loader',
-                    'sass-loader'
-                ]
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 2,
+                            }
+                        },
+                        'postcss-loader',
+                        'sass-loader'
+                    ]
                 })
             },
             {
