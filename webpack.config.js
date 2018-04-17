@@ -11,6 +11,8 @@ const DEST = './public'
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 3000
 
+const production = process.env.NODE_ENV === 'production'
+
 // 空いているポート番号のベースとなるポート番号の設定
 portfinder.basePort = PORT
 
@@ -34,7 +36,38 @@ const htmlTemplates = (() =>{
     })
 })()
 
+const styleLoaders = [
+    {
+        loader: 'css-loader',
+        options: {
+            importLoaders: 2,
+        }
+    },
+    'postcss-loader',
+    {
+        loader: 'sass-loader',
+        options: {
+            includePaths: [ `${SRC}/scss` ],
+        },
+    },
+]
+
+const htmlLoaders = [
+    {
+        loader: 'pug-html-loader',
+        options: {
+            data: {
+                ...readConfig(`${SRC}/constants.yml`),
+                meta: readConfig(`${SRC}/pug/meta.yml`)
+            },
+            basedir: path.resolve(`${SRC}/pug/`),
+            pretty: true,
+        }
+    }
+]
+
 const webpackConfig = {
+    mode: production ? 'production' : 'development',
     // エントリーファイル
     entry: {
         'js/script.js': `${SRC}/js/script.js`,
@@ -61,17 +94,7 @@ const webpackConfig = {
                 test: /\.pug$/,
                 use: [
                     'html-loader',
-                    {
-                        loader: 'pug-html-loader',
-                        options: {
-                            data: {
-                                ...readConfig(`${SRC}/constants.yml`),
-                                meta: readConfig(`${SRC}/pug/meta.yml`)
-                            },
-                            basedir: path.resolve(`${SRC}/pug/`),
-                            pretty: true,
-                        }
-                    }
+                    ...htmlLoaders,
                 ],
             },
             {
@@ -84,21 +107,34 @@ const webpackConfig = {
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                            }
-                        },
-                        'postcss-loader',
-                        'sass-loader'
-                    ]
+                    use: styleLoaders,
                 })
             },
             {
                 test: /.ya?ml$/,
                 loader: 'js-yaml-loader',
+            },
+            {
+                test: /.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        scss: [
+                            'vue-style-loader',
+                            ...styleLoaders,
+                        ],
+                        pug: htmlLoaders,
+                    },
+                    cssSourceMap: true,
+                    cacheBusting: true,
+                    // require()を有効にするタグ・属性の設定
+                    transformToRequire: {
+                        video: ['src', 'poster'],
+                        source: 'src',
+                        img: 'src',
+                        image: 'xlink:href'
+                    }
+                }
             }
         ]
     },
@@ -112,7 +148,10 @@ const webpackConfig = {
     cache: true,
     // 拡張子省略時のpath解決
     resolve: {
-        extensions: ['.js', '.json', '*'],
+        extensions: ['.js', '.json', '.vue', '*'],
+        alias: {
+            '@': path.join(__dirname, `${SRC}`),
+        },
     },
 
     plugins: [
@@ -121,6 +160,9 @@ const webpackConfig = {
         // style.cssを出力
         new ExtractTextPlugin('[name]')
     ],
+
+    // sourcemapの出力
+    devtool: production ? false : 'cheap-source-map',
 }
 
 // ポート番号を割り当ててから実行させる

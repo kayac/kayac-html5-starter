@@ -5,8 +5,8 @@
   "author": "Kayac Inc.",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production --progress",
-    "start": "webpack-dev-server --mode development --inline --open"
+    "build": "NODE_ENV=production webpack --progress",
+    "start": "NODE_ENV=development webpack-dev-server --inline --open"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
@@ -29,6 +29,10 @@
     "read-config": "^2.0.0",
     "reset.css": "^2.0.2",
     "sass-loader": "^6.0.7",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.2",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
