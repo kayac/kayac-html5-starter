@@ -1,12 +1,15 @@
 <template lang="pug">
-.home
+.ranking
     h1 hello world!
 </template>
 
 
 <script>
+import axios from 'axios';
+import _ from 'lodash';
+
 export default {
-    name: "home",
+    name: "ranking",
 }
 </script>
 

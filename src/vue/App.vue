@@ -1,17 +1,23 @@
 <template lang="pug">
 .app
-    home
+    CommonHeader
+    Ranking
+    CommonFooter
 </template>
 
 
 <script>
-import Home from '@/vue/pages/Home.vue'
+import Ranking from '@/vue/pages/Ranking.vue'
+import CommonHeader from '@/vue/parts/CommonHeader.vue'
+import CommonFooter from '@/vue/parts/CommonFooter.vue'
 
 export default {
     name: "app",
 
     components: {
-        Home,
+        Ranking,
+        CommonHeader,
+        CommonFooter,
     }
 }
 </script>
