@@ -22,8 +22,10 @@ yarn
   - このファイルです。
 - `package.json`
   - 依存するnpmパッケージに関する設定ファイルです。
-- `webpack.config.js`
+- `webpack.config.js` / `webpack.config.base.js`
   - webpackに関する設定ファイルです。
+  - loaderやentryの設定は `webpack.config.base.js` にかかれています。
+  - `webpack.config.js` は、 `portfinder` を使用している関係でPromiseを返すかたちになっているので注意してください。
 - `public`
   - Web公開されるファイルの置き場所です。 (`yarn build` 実行までは空の状態です)
 - `src/scss`, `src/js`, `src/pug`
