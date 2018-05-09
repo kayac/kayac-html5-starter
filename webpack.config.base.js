@@ -41,8 +41,9 @@ module.exports = {
     },
     // 出力するディレクトリ・ファイル名などの設定
     output: {
-        path: path.resolve(__dirname, DEST, BASE_DIR),
-        filename: '[name]'
+        path: path.resolve(__dirname, DEST + BASE_DIR),
+        filename: '[name]',
+        publicPath: BASE_DIR,
     },
     module: {
         // 各ファイル形式ごとのビルド設定
@@ -106,6 +107,7 @@ module.exports = {
         host: HOST,
         port: PORT,
         contentBase: DEST,
+        openPage: path.relative('/', BASE_DIR),
     },
     // キャシュ有効化
     cache: true,
