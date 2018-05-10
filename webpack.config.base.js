@@ -10,6 +10,9 @@ const DEST = './public'
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 3000
 
+const constants = readConfig(`${SRC}/constants.yml`)
+const { BASE_DIR } = constants
+
 // page/**/*.pug -> dist/**/*.html
 const htmlTemplates = (() =>{
     const pageDir = `${SRC}/pug/page`
@@ -38,8 +41,9 @@ module.exports = {
     },
     // 出力するディレクトリ・ファイル名などの設定
     output: {
-        path: path.resolve(__dirname, DEST),
+        path: path.resolve(__dirname, DEST + BASE_DIR),
         filename: '[name]',
+        publicPath: BASE_DIR,
     },
     module: {
         // 各ファイル形式ごとのビルド設定
@@ -61,7 +65,7 @@ module.exports = {
                         loader: 'pug-html-loader',
                         options: {
                             data: {
-                                ...readConfig(`${SRC}/constants.yml`),
+                                ...constants,
                                 meta: readConfig(`${SRC}/pug/meta.yml`)
                             },
                             basedir: path.resolve(`${SRC}/pug/`),
@@ -103,6 +107,7 @@ module.exports = {
         host: HOST,
         port: PORT,
         contentBase: DEST,
+        openPage: path.relative('/', BASE_DIR),
     },
     // キャシュ有効化
     cache: true,
