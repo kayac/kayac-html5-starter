@@ -63,3 +63,6 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - [PostCSS](http://postcss.org/)
 - [webpack](https://webpack.js.org/)
 - [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+- [webpack-route-data-mapper](https://github.com/fnobi/webpack-route-data-mapper)
+  - 指定したテンプレートをまとめてhtmlとして書き出し対象にする（html-webpack-pluginのラッパー）
+  - オプションを組み合わせることで、jsonデータに基いてHTMLを大量生成する、といった使い方も可能。詳しくはリンク先のREADMEにて。
