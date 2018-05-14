@@ -124,8 +124,10 @@ module.exports = {
         }
     },
 
-    plugins: [].concat(
-        htmlTemplates, // 複数のHTMLファイルを出力する
-        new ExtractTextPlugin('[name]'),  // style.cssを出力
-    ),
-};
+    plugins: [
+        // 複数のHTMLファイルを出力する
+        ...htmlTemplates,
+        // style.cssを出力
+        new ExtractTextPlugin('[name]')
+    ],
+}
