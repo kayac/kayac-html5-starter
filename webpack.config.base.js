@@ -1,7 +1,8 @@
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+'use strict'
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const routeDataMapper = require('webpack-route-data-mapper')
 const readConfig = require('read-config')
-const glob = require('glob')
 const path = require('path')
 
 // base config
@@ -13,25 +14,19 @@ const PORT = process.env.PORT || 3000
 const constants = readConfig(`${SRC}/constants.yml`)
 const { BASE_DIR } = constants
 
+
 // page/**/*.pug -> dist/**/*.html
-const htmlTemplates = (() =>{
-    const pageDir = `${SRC}/pug/page`
-
-    const filepaths = glob.sync(`${pageDir}/**/[!_]*.pug`)
-
-    return filepaths.map(filepath => {
-        const template = filepath
-        const filename = filepath
-        .replace(pageDir, '.')
-        .replace(/\.pug$/, '.html')
-        return new HTMLWebpackPlugin({
-            template,
-            filename,
-            title: false,
-            hash: true,
-        })
-    })
-})()
+const htmlTemplates = routeDataMapper({
+    baseDir: `${SRC}/pug/page`,
+    src: '**/[!_]*.pug',
+    locals: Object.assign(
+        {},
+        constants,
+        {
+            meta: readConfig(`${SRC}/pug/meta.yml`)
+        }
+    )
+})
 
 module.exports = {
     // エントリーファイル
@@ -60,15 +55,10 @@ module.exports = {
             {
                 test: /\.pug$/,
                 use: [
-                    'html-loader',
                     {
-                        loader: 'pug-html-loader',
+                        loader: 'pug-loader',
                         options: {
-                            data: {
-                                ...constants,
-                                meta: readConfig(`${SRC}/pug/meta.yml`)
-                            },
-                            basedir: path.resolve(`${SRC}/pug/`),
+                            root: path.resolve(`${SRC}/pug/`),
                             pretty: true,
                         }
                     }
