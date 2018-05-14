@@ -92,7 +92,12 @@ module.exports = {
                             }
                         },
                         'postcss-loader',
-                        'sass-loader'
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                includePaths: [ `${SRC}/scss` ],
+                            },
+                        }
                     ]
                 })
             },
@@ -114,12 +119,13 @@ module.exports = {
     // 拡張子省略時のpath解決
     resolve: {
         extensions: ['.js', '.json', '*'],
+        alias: {
+            '@': path.join(__dirname, SRC, 'js'),
+        }
     },
 
-    plugins: [
-        // 複数のHTMLファイルを出力する
-        ...htmlTemplates,
-        // style.cssを出力
-        new ExtractTextPlugin('[name]')
-    ],
-}
+    plugins: [].concat(
+        htmlTemplates, // 複数のHTMLファイルを出力する
+        new ExtractTextPlugin('[name]'),  // style.cssを出力
+    ),
+};
