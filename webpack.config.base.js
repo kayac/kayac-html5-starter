@@ -92,7 +92,12 @@ module.exports = {
                             }
                         },
                         'postcss-loader',
-                        'sass-loader'
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                includePaths: [ `${SRC}/scss` ],
+                            },
+                        }
                     ]
                 })
             },
@@ -114,6 +119,9 @@ module.exports = {
     // 拡張子省略時のpath解決
     resolve: {
         extensions: ['.js', '.json', '*'],
+        alias: {
+            '@': path.join(__dirname, SRC, 'js'),
+        }
     },
 
     plugins: [
