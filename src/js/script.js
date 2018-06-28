@@ -1,10 +1,7 @@
-import { BASE_DIR } from '../constants.yml'
-import Sample from '@/lib/Sample';
+import Vue from 'vue'
+import App from '@/vue/App'
 
-const sample = new Sample({
-    name: 'world'
-});
-
-document.querySelector('.wrapper').addEventListener('click', () => {
-    console.log(`hello, ${sample.name}. Base directory is ${BASE_DIR}.`);
-});
+new Vue({
+    el: '#app',
+    render: h => h(App)
+})

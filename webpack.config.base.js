@@ -14,6 +14,23 @@ const PORT = process.env.PORT || 3000
 const constants = readConfig(`${SRC}/constants.yml`)
 const { BASE_DIR } = constants
 
+const production = process.env.NODE_ENV === 'production'
+
+const styleLoaders = [
+    {
+        loader: 'css-loader',
+        options: {
+            importLoaders: 2,
+        }
+    },
+    'postcss-loader',
+    {
+        loader: 'sass-loader',
+        options: {
+            includePaths: [ `${SRC}/scss` ],
+        },
+    }
+]
 
 // page/**/*.pug -> dist/**/*.html
 const htmlTemplates = routeDataMapper({
@@ -29,6 +46,7 @@ const htmlTemplates = routeDataMapper({
 })
 
 module.exports = {
+    mode: production ? 'production' : 'development',
     // エントリーファイル
     entry: {
         'js/script.js': `${SRC}/js/script.js`,
@@ -74,26 +92,33 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                            }
-                        },
-                        'postcss-loader',
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                includePaths: [ `${SRC}/scss` ],
-                            },
-                        }
-                    ]
+                    use: styleLoaders
                 })
             },
             {
                 test: /.ya?ml$/,
                 loader: 'js-yaml-loader',
+            },
+            {
+                test: /.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        scss: [
+                            'vue-style-loader',
+                            ...styleLoaders,
+                        ],
+                    },
+                    cssSourceMap: true,
+                    cacheBusting: true,
+                    // require()を有効にするタグ・属性の設定
+                    transformToRequire: {
+                        video: ['src', 'poster'],
+                        source: 'src',
+                        img: 'src',
+                        image: 'xlink:href'
+                    }
+                }
             }
         ]
     },
@@ -108,10 +133,10 @@ module.exports = {
     cache: true,
     // 拡張子省略時のpath解決
     resolve: {
-        extensions: ['.js', '.json', '*'],
+        extensions: ['.js', '.json', '.vue', '*'],
         alias: {
-            '@': path.join(__dirname, SRC, 'js'),
-        }
+            '@': path.join(__dirname, SRC),
+        },
     },
 
     plugins: [
@@ -120,4 +145,7 @@ module.exports = {
         // style.cssを出力
         new ExtractTextPlugin('[name]')
     ],
+
+    // sourcemapの出力
+    devtool: production ? false : 'cheap-source-map',
 }
