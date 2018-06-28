@@ -1,6 +1,6 @@
 <template lang="pug">
 .home
-    h1(@click="changeMsg") {{msg}}
+    h1 {{msg}}
 </template>
 
 <script>
