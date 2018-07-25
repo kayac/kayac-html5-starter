@@ -6998,9 +6998,9 @@ webpack-log@^1.0.1, webpack-log@^1.1.2:
     loglevelnext "^1.0.1"
     uuid "^3.1.0"
 
-webpack-route-data-mapper@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/webpack-route-data-mapper/-/webpack-route-data-mapper-2.0.0.tgz#3ba416ce40dbb5bcf294d21bfcbc7dbe2e83d0bd"
+webpack-route-data-mapper@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-route-data-mapper/-/webpack-route-data-mapper-2.1.0.tgz#a3ea5058c2d07c494de96b1bfce733a60691bb68"
   dependencies:
     glob "^7.1.2"
     html-webpack-plugin "^3.2.0"
