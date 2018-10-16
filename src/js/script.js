@@ -1,10 +1,17 @@
-import { BASE_DIR } from '../constants.yml'
-import Sample from '@/lib/Sample';
+const el = document.querySelector('.sample-icon');
 
-const sample = new Sample({
-    name: 'world'
+let mousePos;
+
+function loop () {
+    if (mousePos) {
+        el.style.left = `${mousePos[0]}px`;
+        el.style.top = `${mousePos[1]}px`;
+    }
+    requestAnimationFrame(loop);
+}
+
+window.addEventListener('mousemove', (e) => {
+    mousePos = [e.pageX, e.pageY];
 });
 
-document.querySelector('.wrapper').addEventListener('click', () => {
-    console.log(`hello, ${sample.name}. Base directory is ${BASE_DIR}.`);
-});
+requestAnimationFrame(loop);
