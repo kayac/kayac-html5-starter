@@ -1,11 +1,18 @@
+const SPEED = 0.1;
+
 const el = document.querySelector('.sample-icon');
 
 let mousePos;
+let logoPos = [0, 0];
 
 function loop () {
     if (mousePos) {
-        el.style.left = `${mousePos[0]}px`;
-        el.style.top = `${mousePos[1]}px`;
+        logoPos = [
+            logoPos[0] + (mousePos[0] - logoPos[0]) * SPEED,
+            logoPos[1] + (mousePos[1] - logoPos[1]) * SPEED,
+        ];
+        el.style.left = `${logoPos[0]}px`;
+        el.style.top = `${logoPos[1]}px`;
     }
     requestAnimationFrame(loop);
 }
