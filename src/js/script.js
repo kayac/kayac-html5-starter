@@ -6,7 +6,7 @@ let mousePos;
 let logoPos = [window.innerWidth / 2, window.innerHeight / 2];
 let logoRotate = 0;
 
-function loop () {
+function update() {
     if (mousePos) {
         logoPos = [
             logoPos[0] + (mousePos[0] - logoPos[0]) * SPEED,
@@ -17,14 +17,22 @@ function loop () {
             mousePos[0] - logoPos[0],
         ) / (Math.PI * 2) + 90;
     }
-    el.style.left = `${logoPos[0]}px`;
-    el.style.top = `${logoPos[1]}px`;
-    el.style.transform = `rotate(${logoRotate}deg)`;
+}
+
+function render() {
+    el.style.transform = [
+        `translate(${logoPos[0]}px, ${logoPos[1]}px)`,
+        `rotate(${logoRotate}deg)`
+    ].join(' ');
+}
+
+function loop () {
+    update();
+    render();
     requestAnimationFrame(loop);
 }
+requestAnimationFrame(loop);
 
 window.addEventListener('mousemove', (e) => {
     mousePos = [e.pageX, e.pageY];
 });
-
-requestAnimationFrame(loop);
