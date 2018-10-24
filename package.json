@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
@@ -30,7 +31,7 @@
     "reset.css": "^2.0.2",
     "sass-loader": "^6.0.7",
     "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.1",
     "webpack-route-data-mapper": "^2.1.0"
   },
