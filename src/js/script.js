@@ -2,7 +2,7 @@ import { BASE_DIR } from '../constants.yml'
 import Sample from '@/lib/Sample';
 
 const sample = new Sample({
-    name: 'World'
+    name: 'world'
 });
 
 document.querySelector('.wrapper').addEventListener('click', () => {
