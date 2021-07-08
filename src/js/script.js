@@ -1,10 +1,38 @@
-import { BASE_DIR } from '../constants.yml'
-import Sample from '@/lib/Sample';
+const SPEED = 0.1;
 
-const sample = new Sample({
-    name: 'world'
-});
+const el = document.querySelector('.sample-icon');
 
-document.querySelector('.wrapper').addEventListener('click', () => {
-    console.log(`hello, ${sample.name}. Base directory is ${BASE_DIR}.`);
+let mousePos;
+let logoPos = [window.innerWidth / 2, window.innerHeight / 2];
+let logoRotate = 0;
+
+function update() {
+    if (mousePos) {
+        logoPos = [
+            logoPos[0] + (mousePos[0] - logoPos[0]) * SPEED,
+            logoPos[1] + (mousePos[1] - logoPos[1]) * SPEED,
+        ];
+        logoRotate = 360 * Math.atan2(
+            mousePos[1] - logoPos[1],
+            mousePos[0] - logoPos[0],
+        ) / (Math.PI * 2) + 90;
+    }
+}
+
+function render() {
+    el.style.transform = [
+        `translate(${logoPos[0]}px, ${logoPos[1]}px)`,
+        `rotate(${logoRotate}deg)`
+    ].join(' ');
+}
+
+function loop () {
+    update();
+    render();
+    requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+window.addEventListener('mousemove', (e) => {
+    mousePos = [e.pageX, e.pageY];
 });

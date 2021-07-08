@@ -1,8 +1,12 @@
 .sample-icon {
     $size: 128px;
-    margin: 10px 0px;
     width: $size;
     height: $size;
+    margin-top: (-$size / 2);
+    margin-left: (-$size / 2);
     background-image: image-url('html5.png');
     background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
